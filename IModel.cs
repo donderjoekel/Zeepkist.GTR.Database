@@ -1,4 +1,4 @@
-﻿namespace TNRD.Zeepkist.GTR.Database.Models;
+﻿namespace TNRD.Zeepkist.GTR.Database;
 
 public interface IModel
 {
