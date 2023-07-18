@@ -95,6 +95,9 @@ public partial class GTRContext : DbContext
             entity.Property(e => e.Author)
                 .HasMaxLength(255)
                 .HasColumnName("author");
+            entity.Property(e => e.Blocked)
+                .HasDefaultValueSql("false")
+                .HasColumnName("blocked");
             entity.Property(e => e.CreatedBy).HasColumnName("created_by");
             entity.Property(e => e.DateCreated).HasColumnName("date_created");
             entity.Property(e => e.DateUpdated).HasColumnName("date_updated");

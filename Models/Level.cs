@@ -32,15 +32,17 @@ public partial class Level
 
     public int? Rank { get; set; }
 
-    public int? Points { get; set; }
+    public int Points { get; set; }
+
+    public bool? Blocked { get; set; }
 
     public virtual User CreatedByNavigation { get; set; } = null!;
 
-    public virtual ICollection<Favorite> Favorites { get; } = new List<Favorite>();
+    public virtual ICollection<Favorite> Favorites { get; set; } = new List<Favorite>();
 
-    public virtual ICollection<Record> Records { get; } = new List<Record>();
+    public virtual ICollection<Record> Records { get; set; } = new List<Record>();
 
-    public virtual ICollection<Upvote> Upvotes { get; } = new List<Upvote>();
+    public virtual ICollection<Upvote> Upvotes { get; set; } = new List<Upvote>();
 
-    public virtual ICollection<Vote> Votes { get; } = new List<Vote>();
+    public virtual ICollection<Vote> Votes { get; set; } = new List<Vote>();
 }
