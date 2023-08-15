@@ -18,6 +18,8 @@ public partial class GTRContext : DbContext
 
     public virtual DbSet<Record> Records { get; set; }
 
+    public virtual DbSet<Stat> Stats { get; set; }
+
     public virtual DbSet<Upvote> Upvotes { get; set; }
 
     public virtual DbSet<User> Users { get; set; }
@@ -168,6 +170,60 @@ public partial class GTRContext : DbContext
                 .OnDelete(DeleteBehavior.SetNull)
                 .HasConstraintName("records_user_foreign");
         });
+        
+        modelBuilder.Entity<Stat>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("stats_pkey");
+
+            entity.ToTable("stats");
+
+            entity.Property(e => e.Id)
+                .UseIdentityAlwaysColumn()
+                .HasColumnName("id");
+            entity.Property(e => e.CrashEye).HasColumnName("crash_eye");
+            entity.Property(e => e.CrashGhost).HasColumnName("crash_ghost");
+            entity.Property(e => e.CrashRegular).HasColumnName("crash_regular");
+            entity.Property(e => e.CrashSticky).HasColumnName("crash_sticky");
+            entity.Property(e => e.CrashTotal).HasColumnName("crash_total");
+            entity.Property(e => e.DateCreated).HasColumnName("date_created");
+            entity.Property(e => e.DateUpdated).HasColumnName("date_updated");
+            entity.Property(e => e.DistanceArmsUp).HasColumnName("distance_arms_up");
+            entity.Property(e => e.DistanceBraking).HasColumnName("distance_braking");
+            entity.Property(e => e.DistanceGrounded).HasColumnName("distance_grounded");
+            entity.Property(e => e.DistanceInAir).HasColumnName("distance_in_air");
+            entity.Property(e => e.DistanceOnFourWheels).HasColumnName("distance_on_four_wheels");
+            entity.Property(e => e.DistanceOnGrass).HasColumnName("distance_on_grass");
+            entity.Property(e => e.DistanceOnIce).HasColumnName("distance_on_ice");
+            entity.Property(e => e.DistanceOnNoWheels).HasColumnName("distance_on_no_wheels");
+            entity.Property(e => e.DistanceOnOneWheel).HasColumnName("distance_on_one_wheel");
+            entity.Property(e => e.DistanceOnRegular).HasColumnName("distance_on_regular");
+            entity.Property(e => e.DistanceOnThreeWheels).HasColumnName("distance_on_three_wheels");
+            entity.Property(e => e.DistanceOnTwoWheels).HasColumnName("distance_on_two_wheels");
+            entity.Property(e => e.DistanceRagdoll).HasColumnName("distance_ragdoll");
+            entity.Property(e => e.DistanceWithFourWheels).HasColumnName("distance_with_four_wheels");
+            entity.Property(e => e.DistanceWithNoWheels).HasColumnName("distance_with_no_wheels");
+            entity.Property(e => e.DistanceWithOneWheel).HasColumnName("distance_with_one_wheel");
+            entity.Property(e => e.DistanceWithThreeWheels).HasColumnName("distance_with_three_wheels");
+            entity.Property(e => e.DistanceWithTwoWheels).HasColumnName("distance_with_two_wheels");
+            entity.Property(e => e.TimeArmsUp).HasColumnName("time_arms_up");
+            entity.Property(e => e.TimeBraking).HasColumnName("time_braking");
+            entity.Property(e => e.TimeGrounded).HasColumnName("time_grounded");
+            entity.Property(e => e.TimeInAir).HasColumnName("time_in_air");
+            entity.Property(e => e.TimeOnFourWheels).HasColumnName("time_on_four_wheels");
+            entity.Property(e => e.TimeOnGrass).HasColumnName("time_on_grass");
+            entity.Property(e => e.TimeOnIce).HasColumnName("time_on_ice");
+            entity.Property(e => e.TimeOnNoWheels).HasColumnName("time_on_no_wheels");
+            entity.Property(e => e.TimeOnOneWheel).HasColumnName("time_on_one_wheel");
+            entity.Property(e => e.TimeOnRegular).HasColumnName("time_on_regular");
+            entity.Property(e => e.TimeOnThreeWheels).HasColumnName("time_on_three_wheels");
+            entity.Property(e => e.TimeOnTwoWheels).HasColumnName("time_on_two_wheels");
+            entity.Property(e => e.TimeRagdoll).HasColumnName("time_ragdoll");
+            entity.Property(e => e.TimeWithFourWheels).HasColumnName("time_with_four_wheels");
+            entity.Property(e => e.TimeWithNoWheels).HasColumnName("time_with_no_wheels");
+            entity.Property(e => e.TimeWithOneWheel).HasColumnName("time_with_one_wheel");
+            entity.Property(e => e.TimeWithThreeWheels).HasColumnName("time_with_three_wheels");
+            entity.Property(e => e.TimeWithTwoWheels).HasColumnName("time_with_two_wheels");
+        });
 
         modelBuilder.Entity<Upvote>(entity =>
         {
@@ -209,6 +265,7 @@ public partial class GTRContext : DbContext
                 .HasColumnName("discord_id");
             entity.Property(e => e.Position).HasColumnName("position");
             entity.Property(e => e.Score).HasColumnName("score");
+            entity.Property(e => e.Stats).HasColumnName("stats");
             entity.Property(e => e.SteamId)
                 .HasMaxLength(255)
                 .HasColumnName("steam_id");
@@ -216,6 +273,10 @@ public partial class GTRContext : DbContext
                 .HasMaxLength(255)
                 .HasColumnName("steam_name");
             entity.Property(e => e.WorldRecords).HasColumnName("world_records");
+
+            entity.HasOne(d => d.StatsNavigation).WithMany(p => p.Users)
+                .HasForeignKey(d => d.Stats)
+                .HasConstraintName("fk_user_stats");
         });
 
         modelBuilder.Entity<Vote>(entity =>
