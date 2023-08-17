@@ -89,6 +89,8 @@ public partial class Stat
     public int TimesFinished { get; set; }
     
     public int WheelsBroken { get; set; }
+    
+    public int CheckpointsCrossed { get; set; }
 
     public virtual ICollection<User> Users { get; set; } = new List<User>();
 }

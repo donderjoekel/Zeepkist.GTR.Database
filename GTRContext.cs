@@ -226,6 +226,7 @@ public partial class GTRContext : DbContext
             entity.Property(e => e.TimesStarted).HasColumnName("times_started");
             entity.Property(e => e.TimesFinished).HasColumnName("times_finished");
             entity.Property(e => e.WheelsBroken).HasColumnName("wheels_broken");
+            entity.Property(e => e.CheckpointsCrossed).HasColumnName("checkpoints_crossed");
         });
 
         modelBuilder.Entity<Upvote>(entity =>
