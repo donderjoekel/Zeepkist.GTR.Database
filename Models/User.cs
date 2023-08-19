@@ -22,19 +22,17 @@ public partial class User
 
     public bool? Banned { get; set; }
 
-    public int? Stats { get; set; }
+    public virtual ICollection<Auth> Auths { get; set; } = new List<Auth>();
 
-    public virtual ICollection<Auth> Auths { get; } = new List<Auth>();
+    public virtual ICollection<Favorite> Favorites { get; set; } = new List<Favorite>();
 
-    public virtual ICollection<Favorite> Favorites { get; } = new List<Favorite>();
+    public virtual ICollection<Level> Levels { get; set; } = new List<Level>();
 
-    public virtual ICollection<Level> Levels { get; } = new List<Level>();
+    public virtual ICollection<Record> Records { get; set; } = new List<Record>();
 
-    public virtual ICollection<Record> Records { get; } = new List<Record>();
+    public virtual ICollection<Stat> Stats { get; set; } = new List<Stat>();
 
-    public virtual Stat? StatsNavigation { get; set; }
+    public virtual ICollection<Upvote> Upvotes { get; set; } = new List<Upvote>();
 
-    public virtual ICollection<Upvote> Upvotes { get; } = new List<Upvote>();
-
-    public virtual ICollection<Vote> Votes { get; } = new List<Vote>();
+    public virtual ICollection<Vote> Votes { get; set; } = new List<Vote>();
 }

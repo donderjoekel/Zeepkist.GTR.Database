@@ -170,7 +170,7 @@ public partial class GTRContext : DbContext
                 .OnDelete(DeleteBehavior.SetNull)
                 .HasConstraintName("records_user_foreign");
         });
-        
+
         modelBuilder.Entity<Stat>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("stats_pkey");
@@ -180,6 +180,7 @@ public partial class GTRContext : DbContext
             entity.Property(e => e.Id)
                 .UseIdentityAlwaysColumn()
                 .HasColumnName("id");
+            entity.Property(e => e.CheckpointsCrossed).HasColumnName("checkpoints_crossed");
             entity.Property(e => e.CrashEye).HasColumnName("crash_eye");
             entity.Property(e => e.CrashGhost).HasColumnName("crash_ghost");
             entity.Property(e => e.CrashRegular).HasColumnName("crash_regular");
@@ -205,6 +206,7 @@ public partial class GTRContext : DbContext
             entity.Property(e => e.DistanceWithOneWheel).HasColumnName("distance_with_one_wheel");
             entity.Property(e => e.DistanceWithThreeWheels).HasColumnName("distance_with_three_wheels");
             entity.Property(e => e.DistanceWithTwoWheels).HasColumnName("distance_with_two_wheels");
+            entity.Property(e => e.Month).HasColumnName("month");
             entity.Property(e => e.TimeArmsUp).HasColumnName("time_arms_up");
             entity.Property(e => e.TimeBraking).HasColumnName("time_braking");
             entity.Property(e => e.TimeGrounded).HasColumnName("time_grounded");
@@ -223,10 +225,16 @@ public partial class GTRContext : DbContext
             entity.Property(e => e.TimeWithOneWheel).HasColumnName("time_with_one_wheel");
             entity.Property(e => e.TimeWithThreeWheels).HasColumnName("time_with_three_wheels");
             entity.Property(e => e.TimeWithTwoWheels).HasColumnName("time_with_two_wheels");
-            entity.Property(e => e.TimesStarted).HasColumnName("times_started");
             entity.Property(e => e.TimesFinished).HasColumnName("times_finished");
+            entity.Property(e => e.TimesStarted).HasColumnName("times_started");
+            entity.Property(e => e.User).HasColumnName("user");
             entity.Property(e => e.WheelsBroken).HasColumnName("wheels_broken");
-            entity.Property(e => e.CheckpointsCrossed).HasColumnName("checkpoints_crossed");
+            entity.Property(e => e.Year).HasColumnName("year");
+
+            entity.HasOne(d => d.UserNavigation).WithMany(p => p.Stats)
+                .HasForeignKey(d => d.User)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("fk_user_id");
         });
 
         modelBuilder.Entity<Upvote>(entity =>
@@ -269,7 +277,6 @@ public partial class GTRContext : DbContext
                 .HasColumnName("discord_id");
             entity.Property(e => e.Position).HasColumnName("position");
             entity.Property(e => e.Score).HasColumnName("score");
-            entity.Property(e => e.Stats).HasColumnName("stats");
             entity.Property(e => e.SteamId)
                 .HasMaxLength(255)
                 .HasColumnName("steam_id");
@@ -277,10 +284,6 @@ public partial class GTRContext : DbContext
                 .HasMaxLength(255)
                 .HasColumnName("steam_name");
             entity.Property(e => e.WorldRecords).HasColumnName("world_records");
-
-            entity.HasOne(d => d.StatsNavigation).WithMany(p => p.Users)
-                .HasForeignKey(d => d.Stats)
-                .HasConstraintName("fk_user_stats");
         });
 
         modelBuilder.Entity<Vote>(entity =>

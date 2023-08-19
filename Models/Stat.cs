@@ -83,14 +83,20 @@ public partial class Stat
     public float TimeOnGrass { get; set; }
 
     public float TimeOnIce { get; set; }
-    
+
     public int TimesStarted { get; set; }
-    
+
     public int TimesFinished { get; set; }
-    
+
     public int WheelsBroken { get; set; }
-    
+
     public int CheckpointsCrossed { get; set; }
 
-    public virtual ICollection<User> Users { get; set; } = new List<User>();
+    public int User { get; set; }
+
+    public int Month { get; set; }
+
+    public int Year { get; set; }
+
+    public virtual User UserNavigation { get; set; } = null!;
 }
