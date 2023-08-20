@@ -324,9 +324,22 @@ public partial class GTRContext : DbContext
         return Database.ExecuteSqlRaw("SELECT update_pb(@p_user, @p_level)", paramUserId, paramLevelId);
     }
 
+    public Task<int> UpdatePersonalBestAsync(int user, int level)
+    {
+        NpgsqlParameter paramUserId = new("p_user", user);
+        NpgsqlParameter paramLevelId = new("p_level", level);
+        return Database.ExecuteSqlRawAsync("SELECT update_pb(@p_user, @p_level)", paramUserId, paramLevelId);
+    }
+
     public int UpdateWorldRecord(int level)
     {
         NpgsqlParameter paramLevelId = new("p_level", level);
         return Database.ExecuteSqlRaw("SELECT update_wr(@p_level)", paramLevelId);
+    }
+
+    public Task<int> UpdateWorldRecordAsync(int level)
+    {
+        NpgsqlParameter paramLevelId = new("p_level", level);
+        return Database.ExecuteSqlRawAsync("SELECT update_wr(@p_level)", paramLevelId);
     }
 }
