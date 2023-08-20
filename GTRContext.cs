@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Npgsql;
 using TNRD.Zeepkist.GTR.Database.Models;
 
 namespace TNRD.Zeepkist.GTR.Database;
@@ -315,4 +316,17 @@ public partial class GTRContext : DbContext
     }
 
     partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
+
+    public int UpdatePersonalBest(int user, int level)
+    {
+        NpgsqlParameter paramUserId = new("p_user", user);
+        NpgsqlParameter paramLevelId = new("p_level", level);
+        return Database.ExecuteSqlRaw("SELECT update_pb(@p_user, @p_level)", paramUserId, paramLevelId);
+    }
+
+    public int UpdateWorldRecord(int level)
+    {
+        NpgsqlParameter paramLevelId = new("p_level", level);
+        return Database.ExecuteSqlRaw("SELECT update_wr(@p_level)", paramLevelId);
+    }
 }
