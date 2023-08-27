@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Npgsql;
 using TNRD.Zeepkist.GTR.Database.Models;
+using Version = TNRD.Zeepkist.GTR.Database.Models.Version;
 
 namespace TNRD.Zeepkist.GTR.Database;
 
@@ -24,6 +25,8 @@ public partial class GTRContext : DbContext
     public virtual DbSet<Upvote> Upvotes { get; set; }
 
     public virtual DbSet<User> Users { get; set; }
+
+    public virtual DbSet<Version> Versions { get; set; }
 
     public virtual DbSet<Vote> Votes { get; set; }
 
@@ -285,6 +288,19 @@ public partial class GTRContext : DbContext
                 .HasMaxLength(255)
                 .HasColumnName("steam_name");
             entity.Property(e => e.WorldRecords).HasColumnName("world_records");
+        });
+
+        modelBuilder.Entity<Version>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("versions_pkey");
+
+            entity.ToTable("versions");
+
+            entity.Property(e => e.Id)
+                .UseIdentityAlwaysColumn()
+                .HasColumnName("id");
+            entity.Property(e => e.Latest).HasColumnName("latest");
+            entity.Property(e => e.Minimum).HasColumnName("minimum");
         });
 
         modelBuilder.Entity<Vote>(entity =>
