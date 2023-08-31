@@ -9,6 +9,8 @@ public partial class Record
     public DateTime? DateUpdated { get; set; }
 
     public int? Level { get; set; }
+    
+    public string? LevelHash { get; set; }
 
     public int? User { get; set; }
 

@@ -155,6 +155,7 @@ public partial class GTRContext : DbContext
             entity.Property(e => e.IsValid).HasColumnName("is_valid");
             entity.Property(e => e.IsWr).HasColumnName("is_wr");
             entity.Property(e => e.Level).HasColumnName("level");
+            entity.Property(e => e.LevelHash).HasColumnName("level_hash");
             entity.Property(e => e.ScreenshotUrl)
                 .HasMaxLength(255)
                 .HasColumnName("screenshot_url");
