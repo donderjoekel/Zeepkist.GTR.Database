@@ -394,11 +394,13 @@ public partial class GTRContext : DbContext
         DateTime? endDate,
         int? user,
         int? level,
-        bool? valid
+        bool? valid,
+        int limit = 100,
+        int offset = 0
     )
     {
         return BestRecords
-            .FromSqlInterpolated($"SELECT * FROM get_best({startDate}, {endDate}, {user}, {level}, {valid})")
+            .FromSqlInterpolated($"SELECT * FROM get_best({limit}, {offset}, {startDate}, {endDate}, {user}, {level}, {valid})")
             .ToListAsync();
     }
 }
