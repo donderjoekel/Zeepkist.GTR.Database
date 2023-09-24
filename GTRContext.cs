@@ -331,9 +331,32 @@ public partial class GTRContext : DbContext
                 .HasConstraintName("votes_user_foreign");
         });
 
-        modelBuilder.Entity<BestRecord>()
-            .HasNoKey()
-            .ToView(null);
+        modelBuilder.Entity<BestRecord>(entity =>
+        {
+            entity.HasNoKey();
+            entity.ToView(null);
+
+            entity.Property(e => e.Id).HasColumnName("id");
+            entity.Property(e => e.DateCreated).HasColumnName("date_created");
+            entity.Property(e => e.DateUpdated).HasColumnName("date_updated");
+            entity.Property(e => e.GameVersion)
+                .HasMaxLength(255)
+                .HasColumnName("game_version");
+            entity.Property(e => e.GhostUrl)
+                .HasMaxLength(255)
+                .HasColumnName("ghost_url");
+            entity.Property(e => e.IsValid).HasColumnName("is_valid");
+            entity.Property(e => e.Level).HasColumnName("level");
+            entity.Property(e => e.LevelHash).HasColumnName("level_hash");
+            entity.Property(e => e.ScreenshotUrl)
+                .HasMaxLength(255)
+                .HasColumnName("screenshot_url");
+            entity.Property(e => e.Splits)
+                .HasMaxLength(1024)
+                .HasColumnName("splits");
+            entity.Property(e => e.Time).HasColumnName("time");
+            entity.Property(e => e.User).HasColumnName("user");
+        });
 
         OnModelCreatingPartial(modelBuilder);
     }
