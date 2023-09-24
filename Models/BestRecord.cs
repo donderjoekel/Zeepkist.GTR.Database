@@ -25,8 +25,4 @@ public partial class BestRecord
     public string? GameVersion { get; set; }
 
     public bool IsValid { get; set; }
-
-    public virtual Level? LevelNavigation { get; set; }
-
-    public virtual User? UserNavigation { get; set; }
 }
