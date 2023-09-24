@@ -30,6 +30,8 @@ public partial class GTRContext : DbContext
 
     public virtual DbSet<Vote> Votes { get; set; }
 
+    public virtual DbSet<BestRecord> BestRecords { get; set; }
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder
@@ -329,6 +331,10 @@ public partial class GTRContext : DbContext
                 .HasConstraintName("votes_user_foreign");
         });
 
+        modelBuilder.Entity<BestRecord>()
+            .HasNoKey()
+            .ToView(null);
+
         OnModelCreatingPartial(modelBuilder);
     }
 
@@ -358,5 +364,18 @@ public partial class GTRContext : DbContext
     {
         NpgsqlParameter paramLevelId = new("p_level", level);
         return Database.ExecuteSqlRawAsync("SELECT update_wr(@p_level)", paramLevelId);
+    }
+
+    public Task<List<BestRecord>> GetBestRecords(
+        DateTime? startDate,
+        DateTime? endDate,
+        int? user,
+        int? level,
+        bool? valid
+    )
+    {
+        return BestRecords
+            .FromSqlInterpolated($"SELECT * FROM get_best({startDate}, {endDate}, {user}, {level}, {valid})")
+            .ToListAsync();
     }
 }
