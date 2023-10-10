@@ -18,6 +18,10 @@ public partial class GTRContext : DbContext
 
     public virtual DbSet<Level> Levels { get; set; }
 
+    public virtual DbSet<Media> Media { get; set; }
+
+    public virtual DbSet<PersonalBest> PersonalBests { get; set; }
+
     public virtual DbSet<Record> Records { get; set; }
 
     public virtual DbSet<Stat> Stats { get; set; }
@@ -29,6 +33,8 @@ public partial class GTRContext : DbContext
     public virtual DbSet<Version> Versions { get; set; }
 
     public virtual DbSet<Vote> Votes { get; set; }
+
+    public virtual DbSet<WorldRecord> WorldRecords { get; set; }
 
     public virtual DbSet<BestRecord> BestRecords { get; set; }
 
@@ -44,7 +50,7 @@ public partial class GTRContext : DbContext
         {
             entity.HasKey(e => e.Id).HasName("auth_pkey");
 
-            entity.ToTable("auth");
+            entity.ToTable("auth", tb => tb.HasComment("@omit"));
 
             entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.AccessToken)
@@ -138,6 +144,60 @@ public partial class GTRContext : DbContext
                 .HasConstraintName("levels_created_by_foreign");
         });
 
+        modelBuilder.Entity<Media>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("media_pkey");
+
+            entity.ToTable("media");
+
+            entity.Property(e => e.Id)
+                .ValueGeneratedNever()
+                .HasColumnName("id");
+            entity.Property(e => e.DateCreated).HasColumnName("date_created");
+            entity.Property(e => e.DateUpdated).HasColumnName("date_updated");
+            entity.Property(e => e.GhostUrl).HasColumnName("ghost_url");
+            entity.Property(e => e.Record).HasColumnName("record");
+            entity.Property(e => e.ScreenshotUrl).HasColumnName("screenshot_url");
+
+            entity.HasOne(d => d.RecordNavigation).WithMany(p => p.Media)
+                .HasForeignKey(d => d.Record)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("media_record_fkey");
+        });
+
+        modelBuilder.Entity<PersonalBest>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("personal_bests_pkey");
+
+            entity.ToTable("personal_bests");
+
+            entity.Property(e => e.Id)
+                .ValueGeneratedNever()
+                .HasColumnName("id");
+            entity.Property(e => e.DateCreated).HasColumnName("date_created");
+            entity.Property(e => e.DateUpdated).HasColumnName("date_updated");
+            entity.Property(e => e.Level).HasColumnName("level");
+            entity.Property(e => e.PeriodEnd).HasColumnName("period_end");
+            entity.Property(e => e.PeriodStart).HasColumnName("period_start");
+            entity.Property(e => e.Record).HasColumnName("record");
+            entity.Property(e => e.User).HasColumnName("user");
+
+            entity.HasOne(d => d.LevelNavigation).WithMany(p => p.PersonalBests)
+                .HasForeignKey(d => d.Level)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("personal_bests_level_fkey");
+
+            entity.HasOne(d => d.RecordNavigation).WithMany(p => p.PersonalBests)
+                .HasForeignKey(d => d.Record)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("personal_bests_record_fkey");
+
+            entity.HasOne(d => d.UserNavigation).WithMany(p => p.PersonalBests)
+                .HasForeignKey(d => d.User)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("personal_bests_user_fkey");
+        });
+
         modelBuilder.Entity<Record>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("records_pkey");
@@ -158,6 +218,7 @@ public partial class GTRContext : DbContext
             entity.Property(e => e.IsWr).HasColumnName("is_wr");
             entity.Property(e => e.Level).HasColumnName("level");
             entity.Property(e => e.LevelHash).HasColumnName("level_hash");
+            entity.Property(e => e.ModVersion).HasColumnName("mod_version");
             entity.Property(e => e.ScreenshotUrl)
                 .HasMaxLength(255)
                 .HasColumnName("screenshot_url");
@@ -331,6 +392,39 @@ public partial class GTRContext : DbContext
                 .HasConstraintName("votes_user_foreign");
         });
 
+        modelBuilder.Entity<WorldRecord>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("world_records_pkey");
+
+            entity.ToTable("world_records");
+
+            entity.Property(e => e.Id)
+                .ValueGeneratedNever()
+                .HasColumnName("id");
+            entity.Property(e => e.DateCreated).HasColumnName("date_created");
+            entity.Property(e => e.DateUpdated).HasColumnName("date_updated");
+            entity.Property(e => e.Level).HasColumnName("level");
+            entity.Property(e => e.PeriodEnd).HasColumnName("period_end");
+            entity.Property(e => e.PeriodStart).HasColumnName("period_start");
+            entity.Property(e => e.Record).HasColumnName("record");
+            entity.Property(e => e.User).HasColumnName("user");
+
+            entity.HasOne(d => d.LevelNavigation).WithMany(p => p.WorldRecords)
+                .HasForeignKey(d => d.Level)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("world_records_level_fkey");
+
+            entity.HasOne(d => d.RecordNavigation).WithMany(p => p.WorldRecords)
+                .HasForeignKey(d => d.Record)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("world_records_record_fkey");
+
+            entity.HasOne(d => d.UserNavigation).WithMany(p => p.WorldRecordsNavigation)
+                .HasForeignKey(d => d.User)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("world_records_user_fkey");
+        });
+
         modelBuilder.Entity<BestRecord>(entity =>
         {
             entity.HasNoKey();
@@ -400,7 +494,8 @@ public partial class GTRContext : DbContext
     )
     {
         return BestRecords
-            .FromSqlInterpolated($"SELECT * FROM get_best({limit}, {offset}, {startDate}, {endDate}, {user}, {level}, {valid})")
+            .FromSqlInterpolated(
+                $"SELECT * FROM get_best({limit}, {offset}, {startDate}, {endDate}, {user}, {level}, {valid})")
             .ToListAsync();
     }
 }

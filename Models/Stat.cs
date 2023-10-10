@@ -4,10 +4,6 @@ public class Stat : IModel
 {
     public int Id { get; set; }
 
-    public DateTime? DateCreated { get; set; }
-
-    public DateTime? DateUpdated { get; set; }
-
     public int CrashTotal { get; set; }
 
     public int CrashRegular { get; set; }
@@ -89,6 +85,10 @@ public class Stat : IModel
     public float TimeOnGrass { get; set; }
 
     public float TimeOnIce { get; set; }
+
+    public DateTime? DateCreated { get; set; }
+
+    public DateTime? DateUpdated { get; set; }
 
     public int TimesStarted { get; set; }
 

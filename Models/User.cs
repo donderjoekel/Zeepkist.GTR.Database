@@ -28,6 +28,8 @@ public class User : IModel
 
     public virtual ICollection<Level> Levels { get; set; } = new List<Level>();
 
+    public virtual ICollection<PersonalBest> PersonalBests { get; set; } = new List<PersonalBest>();
+
     public virtual ICollection<Record> Records { get; set; } = new List<Record>();
 
     public virtual ICollection<Stat> Stats { get; set; } = new List<Stat>();
@@ -35,4 +37,6 @@ public class User : IModel
     public virtual ICollection<Upvote> Upvotes { get; set; } = new List<Upvote>();
 
     public virtual ICollection<Vote> Votes { get; set; } = new List<Vote>();
+
+    public virtual ICollection<WorldRecord> WorldRecordsNavigation { get; set; } = new List<WorldRecord>();
 }

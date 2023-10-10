@@ -40,9 +40,13 @@ public class Level : IModel
 
     public virtual ICollection<Favorite> Favorites { get; set; } = new List<Favorite>();
 
+    public virtual ICollection<PersonalBest> PersonalBests { get; set; } = new List<PersonalBest>();
+
     public virtual ICollection<Record> Records { get; set; } = new List<Record>();
 
     public virtual ICollection<Upvote> Upvotes { get; set; } = new List<Upvote>();
 
     public virtual ICollection<Vote> Votes { get; set; } = new List<Vote>();
+
+    public virtual ICollection<WorldRecord> WorldRecords { get; set; } = new List<WorldRecord>();
 }
