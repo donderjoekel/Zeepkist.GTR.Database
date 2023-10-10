@@ -1,6 +1,6 @@
 ﻿namespace TNRD.Zeepkist.GTR.Database.Models;
 
-public partial class Version
+public class Version
 {
     public int Id { get; set; }
 

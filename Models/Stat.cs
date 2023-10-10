@@ -1,7 +1,13 @@
 ﻿namespace TNRD.Zeepkist.GTR.Database.Models;
 
-public partial class Stat
+public class Stat : IModel
 {
+    public int Id { get; set; }
+
+    public DateTime? DateCreated { get; set; }
+
+    public DateTime? DateUpdated { get; set; }
+
     public int CrashTotal { get; set; }
 
     public int CrashRegular { get; set; }

@@ -1,6 +1,6 @@
 ﻿namespace TNRD.Zeepkist.GTR.Database.Models;
 
-public partial class User
+public class User : IModel
 {
     public int Id { get; set; }
 

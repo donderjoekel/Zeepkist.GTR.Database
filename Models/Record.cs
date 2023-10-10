@@ -1,6 +1,6 @@
 ﻿namespace TNRD.Zeepkist.GTR.Database.Models;
 
-public partial class Record
+public class Record : IModel
 {
     public int Id { get; set; }
 
@@ -9,7 +9,7 @@ public partial class Record
     public DateTime? DateUpdated { get; set; }
 
     public int? Level { get; set; }
-    
+
     public string? LevelHash { get; set; }
 
     public int? User { get; set; }

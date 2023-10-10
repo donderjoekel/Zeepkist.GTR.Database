@@ -1,6 +1,6 @@
 ﻿namespace TNRD.Zeepkist.GTR.Database.Models;
 
-public partial class Favorite
+public class Favorite : IModel
 {
     public int Id { get; set; }
 
