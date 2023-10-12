@@ -1,10 +1,11 @@
-﻿namespace TNRD.Zeepkist.GTR.Database.Models;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
-public class Version
+namespace TNRD.Zeepkist.GTR.Database.Models;
+
+[Table("versions")]
+public partial class Version : ModelBase
 {
-    public int Id { get; set; }
+    [Column("minimum")] public string? Minimum { get; set; }
 
-    public string? Minimum { get; set; }
-
-    public string? Latest { get; set; }
+    [Column("latest")] public string? Latest { get; set; }
 }

@@ -1,18 +1,17 @@
-﻿namespace TNRD.Zeepkist.GTR.Database.Models;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
-public class Media : IModel
+namespace TNRD.Zeepkist.GTR.Database.Models;
+
+[Table("media")]
+public partial class Media : ModelBase
 {
-    public int Id { get; set; }
+    [Column("record")] public int Record { get; set; }
 
-    public int Record { get; set; }
+    [Column("ghost_url")] public string GhostUrl { get; set; } = null!;
 
-    public string GhostUrl { get; set; } = null!;
+    [Column("screenshot_url")] public string ScreenshotUrl { get; set; } = null!;
 
-    public string ScreenshotUrl { get; set; } = null!;
-
-    public DateTime? DateCreated { get; set; }
-
-    public DateTime? DateUpdated { get; set; }
-
+    [ForeignKey("Record")]
+    [InverseProperty("Media")]
     public virtual Record RecordNavigation { get; set; } = null!;
 }

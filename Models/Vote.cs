@@ -1,22 +1,19 @@
-﻿namespace TNRD.Zeepkist.GTR.Database.Models;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
-public class Vote : IModel
+namespace TNRD.Zeepkist.GTR.Database.Models;
+
+[Table("votes")]
+public partial class Vote : ModelBase
 {
-    public int Id { get; set; }
+    [Column("user")] public int User { get; set; }
 
-    public DateTime? DateCreated { get; set; }
+    [Column("score")] public int Score { get; set; }
 
-    public DateTime? DateUpdated { get; set; }
+    [Column("category")] public int Category { get; set; }
 
-    public int? Level { get; set; }
+    [Column("level")] public string Level { get; set; } = null!;
 
-    public int? User { get; set; }
-
-    public int? Score { get; set; }
-
-    public int? Category { get; set; }
-
-    public virtual Level? LevelNavigation { get; set; }
-
-    public virtual User? UserNavigation { get; set; }
+    [ForeignKey("User")]
+    [InverseProperty("Votes")]
+    public virtual User UserNavigation { get; set; } = null!;
 }

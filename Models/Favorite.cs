@@ -1,18 +1,15 @@
-﻿namespace TNRD.Zeepkist.GTR.Database.Models;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
-public class Favorite : IModel
+namespace TNRD.Zeepkist.GTR.Database.Models;
+
+[Table("favorites")]
+public partial class Favorite : ModelBase
 {
-    public int Id { get; set; }
+    [Column("user")] public int? User { get; set; }
 
-    public DateTime? DateCreated { get; set; }
+    [Column("level")] public string Level { get; set; } = null!;
 
-    public DateTime? DateUpdated { get; set; }
-
-    public int? Level { get; set; }
-
-    public int? User { get; set; }
-
-    public virtual Level? LevelNavigation { get; set; }
-
+    [ForeignKey("User")]
+    [InverseProperty("Favorites")]
     public virtual User? UserNavigation { get; set; }
 }

@@ -1,44 +1,36 @@
-﻿namespace TNRD.Zeepkist.GTR.Database.Models;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
-public class Record : IModel
+namespace TNRD.Zeepkist.GTR.Database.Models;
+
+[Table("records")]
+public partial class Record : ModelBase
 {
-    public int Id { get; set; }
+    [Column("user")] public int? User { get; set; }
 
-    public DateTime? DateCreated { get; set; }
+    [Column("time")] public float? Time { get; set; }
 
-    public DateTime? DateUpdated { get; set; }
+    [Column("splits")] public string? Splits { get; set; }
 
-    public int? Level { get; set; }
-
-    public int? User { get; set; }
-
-    public float? Time { get; set; }
-
-    public bool IsBest { get; set; }
-
-    public string? Splits { get; set; }
-
-    public string? GhostUrl { get; set; }
-
-    public string? ScreenshotUrl { get; set; }
-
+    [Column("game_version")]
+    [StringLength(255)]
     public string? GameVersion { get; set; }
 
-    public bool IsValid { get; set; }
+    [Column("is_valid")] public bool IsValid { get; set; }
 
-    public bool IsWr { get; set; }
+    [Column("level")] public string Level { get; set; } = null!;
 
-    public string? LevelHash { get; set; }
+    [Column("mod_version")] public string ModVersion { get; set; } = null!;
 
-    public string? ModVersion { get; set; }
+    [InverseProperty("RecordNavigation")] public virtual ICollection<Media> Media { get; set; } = new List<Media>();
 
-    public virtual Level? LevelNavigation { get; set; }
-
-    public virtual ICollection<Media> Media { get; set; } = new List<Media>();
-
+    [InverseProperty("RecordNavigation")]
     public virtual ICollection<PersonalBest> PersonalBests { get; set; } = new List<PersonalBest>();
 
+    [ForeignKey("User")]
+    [InverseProperty("Records")]
     public virtual User? UserNavigation { get; set; }
 
+    [InverseProperty("RecordNavigation")]
     public virtual ICollection<WorldRecord> WorldRecords { get; set; } = new List<WorldRecord>();
 }

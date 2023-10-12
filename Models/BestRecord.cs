@@ -1,13 +1,7 @@
 ﻿namespace TNRD.Zeepkist.GTR.Database.Models;
 
-public class BestRecord : IModel
+public partial class BestRecord : ModelBase
 {
-    public int Id { get; set; }
-
-    public DateTime? DateCreated { get; set; }
-
-    public DateTime? DateUpdated { get; set; }
-
     public int? Level { get; set; }
 
     public string? LevelHash { get; set; }
