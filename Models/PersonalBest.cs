@@ -8,7 +8,7 @@ public class PersonalBest : IModel
 
     public int User { get; set; }
 
-    public int Level { get; set; }
+    public string Level { get; set; } = null!;
 
     public DateTime? PeriodStart { get; set; }
 
@@ -17,8 +17,6 @@ public class PersonalBest : IModel
     public DateTime? DateCreated { get; set; }
 
     public DateTime? DateUpdated { get; set; }
-
-    public virtual Level LevelNavigation { get; set; } = null!;
 
     public virtual Record RecordNavigation { get; set; } = null!;
 

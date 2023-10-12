@@ -178,11 +178,6 @@ public partial class GTRContext : DbContext
             entity.Property(e => e.Record).HasColumnName("record");
             entity.Property(e => e.User).HasColumnName("user");
 
-            entity.HasOne(d => d.LevelNavigation).WithMany(p => p.PersonalBests)
-                .HasForeignKey(d => d.Level)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("personal_bests_level_fkey");
-
             entity.HasOne(d => d.RecordNavigation).WithMany(p => p.PersonalBests)
                 .HasForeignKey(d => d.Record)
                 .OnDelete(DeleteBehavior.ClientSetNull)
@@ -402,11 +397,6 @@ public partial class GTRContext : DbContext
             entity.Property(e => e.PeriodStart).HasColumnName("period_start");
             entity.Property(e => e.Record).HasColumnName("record");
             entity.Property(e => e.User).HasColumnName("user");
-
-            entity.HasOne(d => d.LevelNavigation).WithMany(p => p.WorldRecords)
-                .HasForeignKey(d => d.Level)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("world_records_level_fkey");
 
             entity.HasOne(d => d.RecordNavigation).WithMany(p => p.WorldRecords)
                 .HasForeignKey(d => d.Record)
