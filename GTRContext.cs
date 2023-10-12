@@ -150,9 +150,7 @@ public partial class GTRContext : DbContext
 
             entity.ToTable("media");
 
-            entity.Property(e => e.Id)
-                .ValueGeneratedNever()
-                .HasColumnName("id");
+            entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.DateCreated).HasColumnName("date_created");
             entity.Property(e => e.DateUpdated).HasColumnName("date_updated");
             entity.Property(e => e.GhostUrl).HasColumnName("ghost_url");
@@ -171,9 +169,7 @@ public partial class GTRContext : DbContext
 
             entity.ToTable("personal_bests");
 
-            entity.Property(e => e.Id)
-                .ValueGeneratedNever()
-                .HasColumnName("id");
+            entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.DateCreated).HasColumnName("date_created");
             entity.Property(e => e.DateUpdated).HasColumnName("date_updated");
             entity.Property(e => e.Level).HasColumnName("level");
@@ -398,9 +394,7 @@ public partial class GTRContext : DbContext
 
             entity.ToTable("world_records");
 
-            entity.Property(e => e.Id)
-                .ValueGeneratedNever()
-                .HasColumnName("id");
+            entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.DateCreated).HasColumnName("date_created");
             entity.Property(e => e.DateUpdated).HasColumnName("date_updated");
             entity.Property(e => e.Level).HasColumnName("level");
