@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using TNRD.Zeepkist.GTR.Database.Models;
 using Version = TNRD.Zeepkist.GTR.Database.Models.Version;
 
@@ -34,8 +32,6 @@ public partial class GTRContext : DbContext
     public virtual DbSet<Vote> Votes { get; set; }
 
     public virtual DbSet<WorldRecord> WorldRecords { get; set; }
-
-    public virtual DbSet<BestRecord> BestRecords { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -156,20 +152,4 @@ public partial class GTRContext : DbContext
     }
 
     partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
-
-    public Task<List<BestRecord>> GetBestRecords(
-        DateTime? startDate,
-        DateTime? endDate,
-        int? user,
-        int? level,
-        bool? valid,
-        int limit = 100,
-        int offset = 0
-    )
-    {
-        return BestRecords
-            .FromSqlInterpolated(
-                $"SELECT * FROM get_best({limit}, {offset}, {startDate}, {endDate}, {user}, {level}, {valid})")
-            .ToListAsync();
-    }
 }
