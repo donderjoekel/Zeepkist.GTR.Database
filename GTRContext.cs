@@ -50,8 +50,6 @@ public partial class GTRContext : DbContext
             entity.HasOne(d => d.UserNavigation).WithMany(p => p.Auths)
                 .OnDelete(DeleteBehavior.SetNull)
                 .HasConstraintName("auth_user_foreign");
-
-            entity.Navigation(e => e.UserNavigation).AutoInclude();
         });
 
         modelBuilder.Entity<Favorite>(entity =>
@@ -61,8 +59,6 @@ public partial class GTRContext : DbContext
             entity.HasOne(d => d.UserNavigation).WithMany(p => p.Favorites)
                 .OnDelete(DeleteBehavior.SetNull)
                 .HasConstraintName("favorites_user_foreign");
-
-            entity.Navigation(e => e.UserNavigation).AutoInclude();
         });
 
         modelBuilder.Entity<Media>(entity =>
@@ -72,8 +68,6 @@ public partial class GTRContext : DbContext
             entity.HasOne(d => d.RecordNavigation).WithMany(p => p.Media)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("media_record_fkey");
-
-            entity.Navigation(e => e.RecordNavigation).AutoInclude();
         });
 
         modelBuilder.Entity<PersonalBest>(entity =>
@@ -87,9 +81,6 @@ public partial class GTRContext : DbContext
             entity.HasOne(d => d.UserNavigation).WithMany(p => p.PersonalBests)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("personal_bests_user_fkey");
-
-            entity.Navigation(e => e.UserNavigation).AutoInclude();
-            entity.Navigation(e => e.RecordNavigation).AutoInclude();
         });
 
         modelBuilder.Entity<Record>(entity =>
@@ -99,8 +90,6 @@ public partial class GTRContext : DbContext
             entity.HasOne(d => d.UserNavigation).WithMany(p => p.Records)
                 .OnDelete(DeleteBehavior.SetNull)
                 .HasConstraintName("records_user_foreign");
-
-            entity.Navigation(e => e.UserNavigation).AutoInclude();
         });
 
         modelBuilder.Entity<Stat>(entity =>
@@ -121,8 +110,6 @@ public partial class GTRContext : DbContext
             entity.HasOne(d => d.UserNavigation).WithMany(p => p.Upvotes)
                 .OnDelete(DeleteBehavior.SetNull)
                 .HasConstraintName("upvotes_user_foreign");
-
-            entity.Navigation(e => e.UserNavigation).AutoInclude();
         });
 
         modelBuilder.Entity<User>(entity =>
@@ -146,8 +133,6 @@ public partial class GTRContext : DbContext
             entity.HasOne(d => d.UserNavigation).WithMany(p => p.Votes)
                 .OnDelete(DeleteBehavior.SetNull)
                 .HasConstraintName("votes_user_foreign");
-
-            entity.Navigation(e => e.UserNavigation).AutoInclude();
         });
 
         modelBuilder.Entity<WorldRecord>(entity =>
@@ -161,9 +146,6 @@ public partial class GTRContext : DbContext
             entity.HasOne(d => d.UserNavigation).WithMany(p => p.WorldRecordsNavigation)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("world_records_user_fkey");
-
-            entity.Navigation(e => e.UserNavigation).AutoInclude();
-            entity.Navigation(e => e.RecordNavigation).AutoInclude();
         });
 
         OnModelCreatingPartial(modelBuilder);
