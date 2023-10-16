@@ -6,15 +6,15 @@ namespace TNRD.Zeepkist.GTR.Database.Models;
 [Table("records")]
 public partial class Record : ModelBase
 {
-    [Column("user")] public int? User { get; set; }
+    [Column("user")] public int User { get; set; }
 
-    [Column("time")] public float? Time { get; set; }
+    [Column("time")] public float Time { get; set; }
 
     [Column("splits")] public string? Splits { get; set; }
 
     [Column("game_version")]
     [StringLength(255)]
-    public string? GameVersion { get; set; }
+    public string GameVersion { get; set; } = null!;
 
     [Column("is_valid")] public bool IsValid { get; set; }
 

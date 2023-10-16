@@ -14,17 +14,11 @@ public partial class User : ModelBase
     [StringLength(255)]
     public string? SteamName { get; set; }
 
-    [Column("position")] public int? Position { get; set; }
-
-    [Column("score")] public float? Score { get; set; }
-
-    [Column("world_records")] public int? WorldRecords { get; set; }
-
     [Column("discord_id")]
     [StringLength(255)]
     public string? DiscordId { get; set; }
 
-    [Column("banned")] public bool? Banned { get; set; }
+    [Column("banned")] public bool Banned { get; set; } = false;
 
     [InverseProperty("UserNavigation")] public virtual ICollection<Auth> Auths { get; set; } = new List<Auth>();
 
