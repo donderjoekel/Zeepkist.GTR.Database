@@ -9,8 +9,6 @@ public partial class Vote : ModelBase
 
     [Column("score")] public int Score { get; set; }
 
-    [Column("category")] public int Category { get; set; }
-
     [Column("level")] public string Level { get; set; } = null!;
 
     [ForeignKey("User")]
