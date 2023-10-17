@@ -13,5 +13,5 @@ public partial class Media : ModelBase
 
     [ForeignKey("Record")]
     [InverseProperty("Media")]
-    public virtual Record RecordNavigation { get; set; } = null!;
+    public virtual Record? RecordNavigation { get; set; } = null!;
 }

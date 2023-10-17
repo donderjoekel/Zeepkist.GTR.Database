@@ -13,5 +13,5 @@ public partial class Vote : ModelBase
 
     [ForeignKey("User")]
     [InverseProperty("Votes")]
-    public virtual User UserNavigation { get; set; } = null!;
+    public virtual User? UserNavigation { get; set; } = null!;
 }

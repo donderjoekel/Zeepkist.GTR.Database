@@ -17,9 +17,9 @@ public partial class PersonalBest : ModelBase
 
     [ForeignKey("Record")]
     [InverseProperty("PersonalBests")]
-    public virtual Record RecordNavigation { get; set; } = null!;
+    public virtual Record? RecordNavigation { get; set; } = null!;
 
     [ForeignKey("User")]
     [InverseProperty("PersonalBests")]
-    public virtual User UserNavigation { get; set; } = null!;
+    public virtual User? UserNavigation { get; set; } = null!;
 }

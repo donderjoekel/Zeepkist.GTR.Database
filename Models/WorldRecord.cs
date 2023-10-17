@@ -17,9 +17,9 @@ public partial class WorldRecord : ModelBase
 
     [ForeignKey("Record")]
     [InverseProperty("WorldRecords")]
-    public virtual Record RecordNavigation { get; set; } = null!;
+    public virtual Record? RecordNavigation { get; set; } = null!;
 
     [ForeignKey("User")]
     [InverseProperty("WorldRecordsNavigation")]
-    public virtual User UserNavigation { get; set; } = null!;
+    public virtual User? UserNavigation { get; set; } = null!;
 }

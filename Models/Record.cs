@@ -22,15 +22,15 @@ public partial class Record : ModelBase
 
     [Column("mod_version")] public string ModVersion { get; set; } = null!;
 
-    [InverseProperty("RecordNavigation")] public virtual ICollection<Media> Media { get; set; } = new List<Media>();
+    [InverseProperty("RecordNavigation")] public virtual ICollection<Media>? Media { get; set; } = new List<Media>();
 
     [InverseProperty("RecordNavigation")]
-    public virtual ICollection<PersonalBest> PersonalBests { get; set; } = new List<PersonalBest>();
+    public virtual ICollection<PersonalBest>? PersonalBests { get; set; } = new List<PersonalBest>();
 
     [ForeignKey("User")]
     [InverseProperty("Records")]
     public virtual User? UserNavigation { get; set; }
 
     [InverseProperty("RecordNavigation")]
-    public virtual ICollection<WorldRecord> WorldRecords { get; set; } = new List<WorldRecord>();
+    public virtual ICollection<WorldRecord>? WorldRecords { get; set; } = new List<WorldRecord>();
 }

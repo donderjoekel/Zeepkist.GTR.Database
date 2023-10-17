@@ -11,5 +11,5 @@ public partial class Favorite : ModelBase
 
     [ForeignKey("User")]
     [InverseProperty("Favorites")]
-    public virtual User UserNavigation { get; set; } = null!;
+    public virtual User? UserNavigation { get; set; } = null!;
 }
