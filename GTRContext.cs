@@ -15,6 +15,8 @@ public partial class GTRContext : DbContext
 
     public virtual DbSet<Favorite> Favorites { get; set; }
 
+    public virtual DbSet<LevelPoints> LevelPoints { get; set; }
+
     public virtual DbSet<Media> Media { get; set; }
 
     public virtual DbSet<PersonalBest> PersonalBests { get; set; }
@@ -60,6 +62,8 @@ public partial class GTRContext : DbContext
                 .OnDelete(DeleteBehavior.SetNull)
                 .HasConstraintName("favorites_user_foreign");
         });
+
+        modelBuilder.Entity<LevelPoints>(entity => { entity.HasKey(e => e.Id).HasName("level_points_pkey"); });
 
         modelBuilder.Entity<Media>(entity =>
         {
