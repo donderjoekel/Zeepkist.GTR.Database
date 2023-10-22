@@ -35,4 +35,7 @@ public partial class User : ModelBase
 
     [InverseProperty("UserNavigation")]
     public virtual ICollection<WorldRecord>? WorldRecordsNavigation { get; set; } = new List<WorldRecord>();
+
+    [InverseProperty("UserNavigation")]
+    public virtual ICollection<PlayerPoints>? PlayerPoints { get; set; } = new List<PlayerPoints>();
 }

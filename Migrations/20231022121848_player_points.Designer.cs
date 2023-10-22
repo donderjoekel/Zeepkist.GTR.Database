@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using TNRD.Zeepkist.GTR.Database;
@@ -11,9 +12,11 @@ using TNRD.Zeepkist.GTR.Database;
 namespace TNRD.Zeepkist.GTR.Database.Migrations
 {
     [DbContext(typeof(GTRContext))]
-    partial class GTRContextModelSnapshot : ModelSnapshot
+    [Migration("20231022121848_player_points")]
+    partial class player_points
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

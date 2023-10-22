@@ -21,6 +21,8 @@ public partial class GTRContext : DbContext
 
     public virtual DbSet<PersonalBest> PersonalBests { get; set; }
 
+    public virtual DbSet<PlayerPoints> PlayerPoints { get; set; }
+
     public virtual DbSet<Record> Records { get; set; }
 
     public virtual DbSet<Stat> Stats { get; set; }
@@ -85,6 +87,15 @@ public partial class GTRContext : DbContext
             entity.HasOne(d => d.UserNavigation).WithMany(p => p.PersonalBests)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("personal_bests_user_fkey");
+        });
+
+        modelBuilder.Entity<PlayerPoints>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("player_points_pkey");
+
+            entity.HasOne(d => d.UserNavigation).WithMany(p => p.PlayerPoints)
+                .OnDelete(DeleteBehavior.SetNull)
+                .HasConstraintName("player_points_user_fkey");
         });
 
         modelBuilder.Entity<Record>(entity =>
