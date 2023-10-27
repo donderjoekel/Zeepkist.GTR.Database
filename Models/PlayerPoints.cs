@@ -7,6 +7,7 @@ public class PlayerPoints : ModelBase
 {
     [Column("user")] public int User { get; set; }
     [Column("points")] public int Points { get; set; }
+    [Column("rank")] public int Rank { get; set; }
 
     [ForeignKey("User")]
     [InverseProperty("PlayerPoints")]
