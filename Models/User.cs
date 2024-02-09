@@ -50,7 +50,7 @@ public partial class User : ModelBase
     [InverseProperty("UserNavigation")]
     public virtual ICollection<Vote>? Votes { get; set; } = new List<Vote>();
 
-    [HasMany]
+    [HasMany(PublicName = "worldRecords")]
     [InverseProperty("UserNavigation")]
     public virtual ICollection<WorldRecord>? WorldRecordsNavigation { get; set; } = new List<WorldRecord>();
 
