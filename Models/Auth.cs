@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using JsonApiDotNetCore.Resources.Annotations;
 
 namespace TNRD.Zeepkist.GTR.Database.Models;
 
@@ -7,6 +8,7 @@ namespace TNRD.Zeepkist.GTR.Database.Models;
 /// @omit
 /// </summary>
 [Table("auth")]
+[NoResource]
 public partial class Auth : ModelBase
 {
     [Column("user")] public int? User { get; set; }

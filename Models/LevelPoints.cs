@@ -1,10 +1,11 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
+using JsonApiDotNetCore.Resources.Annotations;
 
 namespace TNRD.Zeepkist.GTR.Database.Models;
 
 [Table("level_points")]
 public class LevelPoints : ModelBase
 {
-    [Column("level")] public string Level { get; set; } = null!;
-    [Column("points")] public int Points { get; set; }
+    [Column("level")] [Attr] public string Level { get; set; } = null!;
+    [Column("points")] [Attr] public int Points { get; set; }
 }
