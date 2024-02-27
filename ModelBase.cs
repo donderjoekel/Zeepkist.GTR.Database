@@ -13,15 +13,9 @@ public class ModelBase : IIdentifiable<int>
     [Attr]
     public int Id { get; set; }
 
-    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    [Column("date_created")]
-    [Attr]
-    public DateTime DateCreated { get; set; }
+    [Column("date_created")] [Attr] public DateTime DateCreated { get; set; }
 
-    [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
-    [Column("date_updated")]
-    [Attr]
-    public DateTime DateUpdated { get; set; }
+    [Column("date_updated")] [Attr] public DateTime DateUpdated { get; set; }
 
     string? IIdentifiable.StringId
     {

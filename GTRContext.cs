@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 using TNRD.Zeepkist.GTR.Database.Models;
 using Version = TNRD.Zeepkist.GTR.Database.Models.Version;
 
@@ -164,6 +165,59 @@ public partial class GTRContext : DbContext
         });
 
         OnModelCreatingPartial(modelBuilder);
+    }
+
+    public override int SaveChanges()
+    {
+        SetDateCreated();
+        SetDateUpdated();
+        return base.SaveChanges();
+    }
+
+    public override int SaveChanges(bool acceptAllChangesOnSuccess)
+    {
+        SetDateCreated();
+        SetDateUpdated();
+        return base.SaveChanges(acceptAllChangesOnSuccess);
+    }
+
+    public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new())
+    {
+        SetDateCreated();
+        SetDateUpdated();
+        return base.SaveChangesAsync(cancellationToken);
+    }
+
+    public override Task<int> SaveChangesAsync(
+        bool acceptAllChangesOnSuccess,
+        CancellationToken cancellationToken = new()
+    )
+    {
+        SetDateCreated();
+        SetDateUpdated();
+        return base.SaveChangesAsync(acceptAllChangesOnSuccess, cancellationToken);
+    }
+
+    private void SetDateCreated()
+    {
+        IEnumerable<EntityEntry<ModelBase>> entries =
+            ChangeTracker.Entries<ModelBase>().Where(x => x.State == EntityState.Added);
+
+        foreach (EntityEntry<ModelBase> entry in entries)
+        {
+            entry.Entity.DateCreated = DateTime.UtcNow;
+        }
+    }
+
+    private void SetDateUpdated()
+    {
+        IEnumerable<EntityEntry<ModelBase>> entries =
+            ChangeTracker.Entries<ModelBase>().Where(x => x.State == EntityState.Modified);
+
+        foreach (EntityEntry<ModelBase> entry in entries)
+        {
+            entry.Entity.DateUpdated = DateTime.UtcNow;
+        }
     }
 
     partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
