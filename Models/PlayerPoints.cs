@@ -12,7 +12,7 @@ public class PlayerPoints : ModelBase
 
     [Column("points")] [Attr] public int Points { get; set; }
     [Column("rank")] [Attr] public int Rank { get; set; }
-    [Column("world_records")] public int WorldRecords { get; set; }
+    [Column("world_records")] [Attr] public int WorldRecords { get; set; }
 
     [ForeignKey("User")]
     [InverseProperty("PlayerPoints")]
