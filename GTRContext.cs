@@ -16,15 +16,21 @@ public partial class GTRContext : DbContext
 
     public virtual DbSet<Favorite> Favorites { get; set; }
 
+    public virtual DbSet<Level> Levels { get; set; }
+
     public virtual DbSet<LevelPoints> LevelPoints { get; set; }
 
     public virtual DbSet<Media> Media { get; set; }
+
+    public virtual DbSet<Metadata> Metadata { get; set; }
 
     public virtual DbSet<PersonalBest> PersonalBests { get; set; }
 
     public virtual DbSet<PlayerPoints> PlayerPoints { get; set; }
 
     public virtual DbSet<Record> Records { get; set; }
+
+    public virtual DbSet<Request> Requests { get; set; }
 
     public virtual DbSet<Stat> Stats { get; set; }
 
@@ -66,6 +72,17 @@ public partial class GTRContext : DbContext
                 .HasConstraintName("favorites_user_foreign");
         });
 
+        modelBuilder.Entity<Level>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("levels_pkey");
+
+            entity.Property(e => e.Id).ValueGeneratedNever();
+
+            entity.HasOne(d => d.Metadata).WithMany(p => p.Levels)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("levels_metadata_id_fkey");
+        });
+
         modelBuilder.Entity<LevelPoints>(entity => { entity.HasKey(e => e.Id).HasName("level_points_pkey"); });
 
         modelBuilder.Entity<Media>(entity =>
@@ -75,6 +92,13 @@ public partial class GTRContext : DbContext
             entity.HasOne(d => d.RecordNavigation).WithMany(p => p.Media)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("media_record_fkey");
+        });
+
+        modelBuilder.Entity<Metadata>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("metadata_pkey");
+
+            entity.Property(e => e.Id).ValueGeneratedNever();
         });
 
         modelBuilder.Entity<PersonalBest>(entity =>
@@ -106,6 +130,11 @@ public partial class GTRContext : DbContext
             entity.HasOne(d => d.UserNavigation).WithMany(p => p.Records)
                 .OnDelete(DeleteBehavior.SetNull)
                 .HasConstraintName("records_user_foreign");
+        });
+
+        modelBuilder.Entity<Request>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("requests_pkey");
         });
 
         modelBuilder.Entity<Stat>(entity =>
