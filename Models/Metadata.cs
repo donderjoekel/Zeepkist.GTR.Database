@@ -40,6 +40,7 @@ public partial class Metadata
     public int Skybox { get; set; }
 
     [Key]
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     [Column("id")]
     public int Id { get; set; }
 
