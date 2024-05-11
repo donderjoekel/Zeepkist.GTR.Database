@@ -9,6 +9,7 @@ namespace TNRD.Zeepkist.GTR.Database.Models;
 public partial class Level
 {
     [Key]
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     [Column("id")]
     public int Id { get; set; }
 
