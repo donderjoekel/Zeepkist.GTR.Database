@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Zeepkist.GTR.Database.Domain.Models;
+namespace TNRD.Zeepkist.GTR.Database.Domain.Models;
 
 public partial class LevelMetadataCreateModel
 {

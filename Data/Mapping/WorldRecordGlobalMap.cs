@@ -2,12 +2,12 @@ using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 
-namespace Zeepkist.GTR.Database.Data.Mapping;
+namespace TNRD.Zeepkist.GTR.Database.Data.Mapping;
 
 public partial class WorldRecordGlobalMap
-    : IEntityTypeConfiguration<Zeepkist.GTR.Database.Data.Entities.WorldRecordGlobal>
+    : IEntityTypeConfiguration<TNRD.Zeepkist.GTR.Database.Data.Entities.WorldRecordGlobal>
 {
-    public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<Zeepkist.GTR.Database.Data.Entities.WorldRecordGlobal> builder)
+    public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<TNRD.Zeepkist.GTR.Database.Data.Entities.WorldRecordGlobal> builder)
     {
         #region Generated Configure
         // table

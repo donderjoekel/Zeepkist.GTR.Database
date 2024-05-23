@@ -2,12 +2,12 @@ using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 
-namespace Zeepkist.GTR.Database.Data.Mapping;
+namespace TNRD.Zeepkist.GTR.Database.Data.Mapping;
 
 public partial class PersonalBestDailyMap
-    : IEntityTypeConfiguration<Zeepkist.GTR.Database.Data.Entities.PersonalBestDaily>
+    : IEntityTypeConfiguration<TNRD.Zeepkist.GTR.Database.Data.Entities.PersonalBestDaily>
 {
-    public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<Zeepkist.GTR.Database.Data.Entities.PersonalBestDaily> builder)
+    public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<TNRD.Zeepkist.GTR.Database.Data.Entities.PersonalBestDaily> builder)
     {
         #region Generated Configure
         // table

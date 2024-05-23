@@ -2,12 +2,12 @@ using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 
-namespace Zeepkist.GTR.Database.Data.Mapping;
+namespace TNRD.Zeepkist.GTR.Database.Data.Mapping;
 
 public partial class WorldRecordWeeklyMap
-    : IEntityTypeConfiguration<Zeepkist.GTR.Database.Data.Entities.WorldRecordWeekly>
+    : IEntityTypeConfiguration<TNRD.Zeepkist.GTR.Database.Data.Entities.WorldRecordWeekly>
 {
-    public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<Zeepkist.GTR.Database.Data.Entities.WorldRecordWeekly> builder)
+    public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<TNRD.Zeepkist.GTR.Database.Data.Entities.WorldRecordWeekly> builder)
     {
         #region Generated Configure
         // table

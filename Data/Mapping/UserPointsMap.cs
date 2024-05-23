@@ -2,12 +2,12 @@ using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 
-namespace Zeepkist.GTR.Database.Data.Mapping;
+namespace TNRD.Zeepkist.GTR.Database.Data.Mapping;
 
 public partial class UserPointsMap
-    : IEntityTypeConfiguration<Zeepkist.GTR.Database.Data.Entities.UserPoints>
+    : IEntityTypeConfiguration<TNRD.Zeepkist.GTR.Database.Data.Entities.UserPoints>
 {
-    public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<Zeepkist.GTR.Database.Data.Entities.UserPoints> builder)
+    public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<TNRD.Zeepkist.GTR.Database.Data.Entities.UserPoints> builder)
     {
         #region Generated Configure
         // table

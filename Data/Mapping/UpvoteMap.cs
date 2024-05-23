@@ -2,12 +2,12 @@ using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 
-namespace Zeepkist.GTR.Database.Data.Mapping;
+namespace TNRD.Zeepkist.GTR.Database.Data.Mapping;
 
 public partial class UpvoteMap
-    : IEntityTypeConfiguration<Zeepkist.GTR.Database.Data.Entities.Upvote>
+    : IEntityTypeConfiguration<TNRD.Zeepkist.GTR.Database.Data.Entities.Upvote>
 {
-    public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<Zeepkist.GTR.Database.Data.Entities.Upvote> builder)
+    public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<TNRD.Zeepkist.GTR.Database.Data.Entities.Upvote> builder)
     {
         #region Generated Configure
         // table

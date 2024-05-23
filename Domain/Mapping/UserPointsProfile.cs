@@ -1,24 +1,24 @@
 using System;
 using AutoMapper;
-using Zeepkist.GTR.Database.Data.Entities;
-using Zeepkist.GTR.Database.Domain.Models;
+using TNRD.Zeepkist.GTR.Database.Data.Entities;
+using TNRD.Zeepkist.GTR.Database.Domain.Models;
 
-namespace Zeepkist.GTR.Database.Domain.Mapping;
+namespace TNRD.Zeepkist.GTR.Database.Domain.Mapping;
 
 public partial class UserPointsProfile
     : AutoMapper.Profile
 {
     public UserPointsProfile()
     {
-        CreateMap<Zeepkist.GTR.Database.Data.Entities.UserPoints, Zeepkist.GTR.Database.Domain.Models.UserPointsReadModel>();
+        CreateMap<TNRD.Zeepkist.GTR.Database.Data.Entities.UserPoints, TNRD.Zeepkist.GTR.Database.Domain.Models.UserPointsReadModel>();
 
-        CreateMap<Zeepkist.GTR.Database.Domain.Models.UserPointsCreateModel, Zeepkist.GTR.Database.Data.Entities.UserPoints>();
+        CreateMap<TNRD.Zeepkist.GTR.Database.Domain.Models.UserPointsCreateModel, TNRD.Zeepkist.GTR.Database.Data.Entities.UserPoints>();
 
-        CreateMap<Zeepkist.GTR.Database.Data.Entities.UserPoints, Zeepkist.GTR.Database.Domain.Models.UserPointsUpdateModel>();
+        CreateMap<TNRD.Zeepkist.GTR.Database.Data.Entities.UserPoints, TNRD.Zeepkist.GTR.Database.Domain.Models.UserPointsUpdateModel>();
 
-        CreateMap<Zeepkist.GTR.Database.Domain.Models.UserPointsUpdateModel, Zeepkist.GTR.Database.Data.Entities.UserPoints>();
+        CreateMap<TNRD.Zeepkist.GTR.Database.Domain.Models.UserPointsUpdateModel, TNRD.Zeepkist.GTR.Database.Data.Entities.UserPoints>();
 
-        CreateMap<Zeepkist.GTR.Database.Domain.Models.UserPointsReadModel, Zeepkist.GTR.Database.Domain.Models.UserPointsUpdateModel>();
+        CreateMap<TNRD.Zeepkist.GTR.Database.Domain.Models.UserPointsReadModel, TNRD.Zeepkist.GTR.Database.Domain.Models.UserPointsUpdateModel>();
 
     }
 

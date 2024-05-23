@@ -2,12 +2,12 @@ using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 
-namespace Zeepkist.GTR.Database.Data.Mapping;
+namespace TNRD.Zeepkist.GTR.Database.Data.Mapping;
 
 public partial class StatsMonthlyMap
-    : IEntityTypeConfiguration<Zeepkist.GTR.Database.Data.Entities.StatsMonthly>
+    : IEntityTypeConfiguration<TNRD.Zeepkist.GTR.Database.Data.Entities.StatsMonthly>
 {
-    public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<Zeepkist.GTR.Database.Data.Entities.StatsMonthly> builder)
+    public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<TNRD.Zeepkist.GTR.Database.Data.Entities.StatsMonthly> builder)
     {
         #region Generated Configure
         // table

@@ -1,24 +1,24 @@
 using System;
 using AutoMapper;
-using Zeepkist.GTR.Database.Data.Entities;
-using Zeepkist.GTR.Database.Domain.Models;
+using TNRD.Zeepkist.GTR.Database.Data.Entities;
+using TNRD.Zeepkist.GTR.Database.Domain.Models;
 
-namespace Zeepkist.GTR.Database.Domain.Mapping;
+namespace TNRD.Zeepkist.GTR.Database.Domain.Mapping;
 
 public partial class StatsYearlyProfile
     : AutoMapper.Profile
 {
     public StatsYearlyProfile()
     {
-        CreateMap<Zeepkist.GTR.Database.Data.Entities.StatsYearly, Zeepkist.GTR.Database.Domain.Models.StatsYearlyReadModel>();
+        CreateMap<TNRD.Zeepkist.GTR.Database.Data.Entities.StatsYearly, TNRD.Zeepkist.GTR.Database.Domain.Models.StatsYearlyReadModel>();
 
-        CreateMap<Zeepkist.GTR.Database.Domain.Models.StatsYearlyCreateModel, Zeepkist.GTR.Database.Data.Entities.StatsYearly>();
+        CreateMap<TNRD.Zeepkist.GTR.Database.Domain.Models.StatsYearlyCreateModel, TNRD.Zeepkist.GTR.Database.Data.Entities.StatsYearly>();
 
-        CreateMap<Zeepkist.GTR.Database.Data.Entities.StatsYearly, Zeepkist.GTR.Database.Domain.Models.StatsYearlyUpdateModel>();
+        CreateMap<TNRD.Zeepkist.GTR.Database.Data.Entities.StatsYearly, TNRD.Zeepkist.GTR.Database.Domain.Models.StatsYearlyUpdateModel>();
 
-        CreateMap<Zeepkist.GTR.Database.Domain.Models.StatsYearlyUpdateModel, Zeepkist.GTR.Database.Data.Entities.StatsYearly>();
+        CreateMap<TNRD.Zeepkist.GTR.Database.Domain.Models.StatsYearlyUpdateModel, TNRD.Zeepkist.GTR.Database.Data.Entities.StatsYearly>();
 
-        CreateMap<Zeepkist.GTR.Database.Domain.Models.StatsYearlyReadModel, Zeepkist.GTR.Database.Domain.Models.StatsYearlyUpdateModel>();
+        CreateMap<TNRD.Zeepkist.GTR.Database.Domain.Models.StatsYearlyReadModel, TNRD.Zeepkist.GTR.Database.Domain.Models.StatsYearlyUpdateModel>();
 
     }
 

@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Zeepkist.GTR.Database.Data.Entities;
+namespace TNRD.Zeepkist.GTR.Database.Data.Entities;
 
 public partial class LevelPoints
 {

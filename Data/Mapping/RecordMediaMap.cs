@@ -2,12 +2,12 @@ using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 
-namespace Zeepkist.GTR.Database.Data.Mapping;
+namespace TNRD.Zeepkist.GTR.Database.Data.Mapping;
 
 public partial class RecordMediaMap
-    : IEntityTypeConfiguration<Zeepkist.GTR.Database.Data.Entities.RecordMedia>
+    : IEntityTypeConfiguration<TNRD.Zeepkist.GTR.Database.Data.Entities.RecordMedia>
 {
-    public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<Zeepkist.GTR.Database.Data.Entities.RecordMedia> builder)
+    public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<TNRD.Zeepkist.GTR.Database.Data.Entities.RecordMedia> builder)
     {
         #region Generated Configure
         // table
