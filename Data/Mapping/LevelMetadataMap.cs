@@ -17,61 +17,46 @@ public partial class LevelMetadataMap
         builder.HasKey(t => t.Id);
 
         // properties
-        builder.Property(t => t.Hash)
+        builder.Property(t => t.Id)
             .IsRequired()
-            .HasColumnName("hash")
-            .HasColumnType("text");
+            .HasColumnName("id")
+            .HasColumnType("integer")
+            .ValueGeneratedOnAdd();
 
-        builder.Property(t => t.Valid)
+        builder.Property(t => t.IdLevel)
             .IsRequired()
-            .HasColumnName("valid")
-            .HasColumnType("boolean");
+            .HasColumnName("id_level")
+            .HasColumnType("integer");
 
-        builder.Property(t => t.Checkpoints)
+        builder.Property(t => t.AmountCheckpoints)
             .IsRequired()
-            .HasColumnName("checkpoints")
+            .HasColumnName("amount_checkpoints")
+            .HasColumnType("integer");
+
+        builder.Property(t => t.AmountFinishes)
+            .IsRequired()
+            .HasColumnName("amount_finishes")
+            .HasColumnType("integer");
+
+        builder.Property(t => t.AmountBlocks)
+            .IsRequired()
+            .HasColumnName("amount_blocks")
+            .HasColumnType("integer");
+
+        builder.Property(t => t.TypeGround)
+            .IsRequired()
+            .HasColumnName("type_ground")
+            .HasColumnType("integer");
+
+        builder.Property(t => t.TypeSkybox)
+            .IsRequired()
+            .HasColumnName("type_skybox")
             .HasColumnType("integer");
 
         builder.Property(t => t.Blocks)
             .IsRequired()
             .HasColumnName("blocks")
             .HasColumnType("text");
-
-        builder.Property(t => t.Validation)
-            .IsRequired()
-            .HasColumnName("validation")
-            .HasColumnType("real");
-
-        builder.Property(t => t.Gold)
-            .IsRequired()
-            .HasColumnName("gold")
-            .HasColumnType("real");
-
-        builder.Property(t => t.Silver)
-            .IsRequired()
-            .HasColumnName("silver")
-            .HasColumnType("real");
-
-        builder.Property(t => t.Bronze)
-            .IsRequired()
-            .HasColumnName("bronze")
-            .HasColumnType("real");
-
-        builder.Property(t => t.Ground)
-            .IsRequired()
-            .HasColumnName("ground")
-            .HasColumnType("integer");
-
-        builder.Property(t => t.Skybox)
-            .IsRequired()
-            .HasColumnName("skybox")
-            .HasColumnType("integer");
-
-        builder.Property(t => t.Id)
-            .IsRequired()
-            .HasColumnName("id")
-            .HasColumnType("integer")
-            .ValueGeneratedOnAdd();
 
         builder.Property(t => t.DateCreated)
             .IsRequired()
@@ -83,6 +68,11 @@ public partial class LevelMetadataMap
             .HasColumnType("timestamp with time zone");
 
         // relationships
+        builder.HasOne(t => t.Level)
+            .WithMany(t => t.LevelMetadata)
+            .HasForeignKey(d => d.IdLevel)
+            .HasConstraintName("level_metadata_id_level_fkey");
+
         #endregion
     }
 
@@ -95,17 +85,14 @@ public partial class LevelMetadataMap
 
     public readonly struct Columns
     {
-        public const string Hash = "hash";
-        public const string Valid = "valid";
-        public const string Checkpoints = "checkpoints";
-        public const string Blocks = "blocks";
-        public const string Validation = "validation";
-        public const string Gold = "gold";
-        public const string Silver = "silver";
-        public const string Bronze = "bronze";
-        public const string Ground = "ground";
-        public const string Skybox = "skybox";
         public const string Id = "id";
+        public const string IdLevel = "id_level";
+        public const string AmountCheckpoints = "amount_checkpoints";
+        public const string AmountFinishes = "amount_finishes";
+        public const string AmountBlocks = "amount_blocks";
+        public const string TypeGround = "type_ground";
+        public const string TypeSkybox = "type_skybox";
+        public const string Blocks = "blocks";
         public const string DateCreated = "date_created";
         public const string DateUpdated = "date_updated";
     }

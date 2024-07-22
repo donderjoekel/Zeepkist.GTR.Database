@@ -23,29 +23,25 @@ public partial class AuthMap
             .HasColumnType("integer")
             .ValueGeneratedOnAdd();
 
-        builder.Property(t => t.User)
-            .HasColumnName("user")
+        builder.Property(t => t.IdUser)
+            .HasColumnName("id_user")
             .HasColumnType("integer");
 
         builder.Property(t => t.AccessToken)
             .HasColumnName("access_token")
-            .HasColumnType("character varying(255)")
-            .HasMaxLength(255);
+            .HasColumnType("text");
 
         builder.Property(t => t.AccessTokenExpiry)
             .HasColumnName("access_token_expiry")
-            .HasColumnType("character varying(255)")
-            .HasMaxLength(255);
+            .HasColumnType("bigint");
 
         builder.Property(t => t.RefreshToken)
             .HasColumnName("refresh_token")
-            .HasColumnType("character varying(255)")
-            .HasMaxLength(255);
+            .HasColumnType("text");
 
         builder.Property(t => t.RefreshTokenExpiry)
             .HasColumnName("refresh_token_expiry")
-            .HasColumnType("character varying(255)")
-            .HasMaxLength(255);
+            .HasColumnType("bigint");
 
         builder.Property(t => t.Type)
             .HasColumnName("type")
@@ -54,19 +50,16 @@ public partial class AuthMap
         builder.Property(t => t.DateCreated)
             .IsRequired()
             .HasColumnName("date_created")
-            .HasColumnType("timestamp with time zone")
-            .HasDefaultValueSql("now()");
+            .HasColumnType("timestamp with time zone");
 
         builder.Property(t => t.DateUpdated)
-            .IsRequired()
             .HasColumnName("date_updated")
-            .HasColumnType("timestamp with time zone")
-            .HasDefaultValueSql("now()");
+            .HasColumnType("timestamp with time zone");
 
         // relationships
-        builder.HasOne(t => t.User1)
+        builder.HasOne(t => t.User)
             .WithMany(t => t.Auths)
-            .HasForeignKey(d => d.User)
+            .HasForeignKey(d => d.IdUser)
             .HasConstraintName("auth_user_foreign");
 
         #endregion
@@ -82,7 +75,7 @@ public partial class AuthMap
     public readonly struct Columns
     {
         public const string Id = "id";
-        public const string User = "user";
+        public const string IdUser = "id_user";
         public const string AccessToken = "access_token";
         public const string AccessTokenExpiry = "access_token_expiry";
         public const string RefreshToken = "refresh_token";

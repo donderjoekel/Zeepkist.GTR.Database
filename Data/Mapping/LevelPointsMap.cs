@@ -28,9 +28,9 @@ public partial class LevelPointsMap
             .HasColumnName("points")
             .HasColumnType("integer");
 
-        builder.Property(t => t.Level)
+        builder.Property(t => t.IdLevel)
             .IsRequired()
-            .HasColumnName("level")
+            .HasColumnName("id_level")
             .HasColumnType("integer");
 
         builder.Property(t => t.DateCreated)
@@ -43,9 +43,9 @@ public partial class LevelPointsMap
             .HasColumnType("timestamp with time zone");
 
         // relationships
-        builder.HasOne(t => t.LevelLevelMetadata)
-            .WithMany(t => t.LevelLevelPoints)
-            .HasForeignKey(d => d.Level)
+        builder.HasOne(t => t.Level)
+            .WithMany(t => t.LevelPoints)
+            .HasForeignKey(d => d.IdLevel)
             .HasConstraintName("level_points_level_fkey");
 
         #endregion
@@ -62,7 +62,7 @@ public partial class LevelPointsMap
     {
         public const string Id = "id";
         public const string Points = "points";
-        public const string Level = "level";
+        public const string IdLevel = "id_level";
         public const string DateCreated = "date_created";
         public const string DateUpdated = "date_updated";
     }

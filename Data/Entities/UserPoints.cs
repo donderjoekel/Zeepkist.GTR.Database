@@ -1,9 +1,7 @@
-using System;
-using System.Collections.Generic;
-
 namespace TNRD.Zeepkist.GTR.Database.Data.Entities;
 
 public partial class UserPoints
+    : IEntity, global::JsonApiDotNetCore.Resources.IIdentifiable<int>
 {
     public UserPoints()
     {
@@ -12,25 +10,35 @@ public partial class UserPoints
     }
 
     #region Generated Properties
-    public int Id { get; set; }
-
-    public int User { get; set; }
-
-    public int Points { get; set; }
-
-    public DateTime DateCreated { get; set; }
-
-    public DateTime? DateUpdated { get; set; }
-
-    public int Rank { get; set; }
-
-    public int? WorldRecords { get; set; }
-
+    [global::JsonApiDotNetCore.Resources.Annotations.AttrAttribute] public int Id { get; set; }
+    [global::JsonApiDotNetCore.Resources.Annotations.AttrAttribute] public int IdUser { get; set; }
+    [global::JsonApiDotNetCore.Resources.Annotations.AttrAttribute] public int Points { get; set; }
+    [global::JsonApiDotNetCore.Resources.Annotations.AttrAttribute] public global::System.DateTime DateCreated { get; set; }
+    [global::JsonApiDotNetCore.Resources.Annotations.AttrAttribute] public global::System.DateTime? DateUpdated { get; set; }
+    [global::JsonApiDotNetCore.Resources.Annotations.AttrAttribute] public int Rank { get; set; }
+    [global::JsonApiDotNetCore.Resources.Annotations.AttrAttribute] public int? WorldRecords { get; set; }
     #endregion
 
     #region Generated Relationships
-    public virtual User User1 { get; set; } = null!;
+    [global::JsonApiDotNetCore.Resources.Annotations.HasOneAttribute] public virtual global::TNRD.Zeepkist.GTR.Database.Data.Entities.User User { get; set; } = null!;
+    #endregion
 
+    #region Generated IIdentifiable Properties
+    string global::JsonApiDotNetCore.Resources.IIdentifiable.StringId
+    {
+        get => Id.ToString();
+        set { }
+    }
+    string global::JsonApiDotNetCore.Resources.IIdentifiable.LocalId
+    {
+        get => null;
+        set { }
+    }
+    int global::JsonApiDotNetCore.Resources.IIdentifiable<int>.Id
+    {
+        get => Id;
+        set { }
+    }
     #endregion
 
 }

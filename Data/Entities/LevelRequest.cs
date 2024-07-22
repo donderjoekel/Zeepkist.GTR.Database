@@ -1,9 +1,7 @@
-using System;
-using System.Collections.Generic;
-
 namespace TNRD.Zeepkist.GTR.Database.Data.Entities;
 
 public partial class LevelRequest
+    : IEntity, global::JsonApiDotNetCore.Resources.IIdentifiable<int>
 {
     public LevelRequest()
     {
@@ -12,21 +10,33 @@ public partial class LevelRequest
     }
 
     #region Generated Properties
-    public int Id { get; set; }
-
-    public decimal WorkshopId { get; set; }
-
-    public string? Uid { get; set; }
-
-    public string? Hash { get; set; }
-
-    public DateTime DateCreated { get; set; }
-
-    public DateTime? DateUpdated { get; set; }
-
+    [global::JsonApiDotNetCore.Resources.Annotations.AttrAttribute] public int Id { get; set; }
+    [global::JsonApiDotNetCore.Resources.Annotations.AttrAttribute] public decimal WorkshopId { get; set; }
+    [global::JsonApiDotNetCore.Resources.Annotations.AttrAttribute] public string? Uid { get; set; }
+    [global::JsonApiDotNetCore.Resources.Annotations.AttrAttribute] public string? Hash { get; set; }
+    [global::JsonApiDotNetCore.Resources.Annotations.AttrAttribute] public global::System.DateTime DateCreated { get; set; }
+    [global::JsonApiDotNetCore.Resources.Annotations.AttrAttribute] public global::System.DateTime? DateUpdated { get; set; }
     #endregion
 
     #region Generated Relationships
+    #endregion
+
+    #region Generated IIdentifiable Properties
+    string global::JsonApiDotNetCore.Resources.IIdentifiable.StringId
+    {
+        get => Id.ToString();
+        set { }
+    }
+    string global::JsonApiDotNetCore.Resources.IIdentifiable.LocalId
+    {
+        get => null;
+        set { }
+    }
+    int global::JsonApiDotNetCore.Resources.IIdentifiable<int>.Id
+    {
+        get => Id;
+        set { }
+    }
     #endregion
 
 }

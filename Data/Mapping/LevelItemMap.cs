@@ -23,25 +23,10 @@ public partial class LevelItemMap
             .HasColumnType("integer")
             .ValueGeneratedOnAdd();
 
-        builder.Property(t => t.Name)
+        builder.Property(t => t.IdLevel)
             .IsRequired()
-            .HasColumnName("name")
-            .HasColumnType("text");
-
-        builder.Property(t => t.ImageUrl)
-            .IsRequired()
-            .HasColumnName("image_url")
-            .HasColumnType("text");
-
-        builder.Property(t => t.CreatedAt)
-            .IsRequired()
-            .HasColumnName("created_at")
-            .HasColumnType("timestamp with time zone");
-
-        builder.Property(t => t.UpdatedAt)
-            .IsRequired()
-            .HasColumnName("updated_at")
-            .HasColumnType("timestamp with time zone");
+            .HasColumnName("id_level")
+            .HasColumnType("integer");
 
         builder.Property(t => t.WorkshopId)
             .IsRequired()
@@ -53,14 +38,14 @@ public partial class LevelItemMap
             .HasColumnName("author_id")
             .HasColumnType("numeric");
 
-        builder.Property(t => t.FileHash)
+        builder.Property(t => t.Name)
             .IsRequired()
-            .HasColumnName("file_hash")
+            .HasColumnName("name")
             .HasColumnType("text");
 
-        builder.Property(t => t.FileUrl)
+        builder.Property(t => t.ImageUrl)
             .IsRequired()
-            .HasColumnName("file_url")
+            .HasColumnName("image_url")
             .HasColumnType("text");
 
         builder.Property(t => t.FileAuthor)
@@ -73,19 +58,40 @@ public partial class LevelItemMap
             .HasColumnName("file_uid")
             .HasColumnType("text");
 
-        builder.Property(t => t.ReplacedBy)
-            .HasColumnName("replaced_by")
-            .HasColumnType("integer");
+        builder.Property(t => t.ValidationTimeAuthor)
+            .IsRequired()
+            .HasColumnName("validation_time_author")
+            .HasColumnType("real");
+
+        builder.Property(t => t.ValidationTimeGold)
+            .IsRequired()
+            .HasColumnName("validation_time_gold")
+            .HasColumnType("real");
+
+        builder.Property(t => t.ValidationTimeSilver)
+            .IsRequired()
+            .HasColumnName("validation_time_silver")
+            .HasColumnType("real");
+
+        builder.Property(t => t.ValidationTimeBronze)
+            .IsRequired()
+            .HasColumnName("validation_time_bronze")
+            .HasColumnType("real");
 
         builder.Property(t => t.Deleted)
             .IsRequired()
             .HasColumnName("deleted")
             .HasColumnType("boolean");
 
-        builder.Property(t => t.MetadataId)
+        builder.Property(t => t.CreatedAt)
             .IsRequired()
-            .HasColumnName("metadata_id")
-            .HasColumnType("integer");
+            .HasColumnName("created_at")
+            .HasColumnType("timestamp with time zone");
+
+        builder.Property(t => t.UpdatedAt)
+            .IsRequired()
+            .HasColumnName("updated_at")
+            .HasColumnType("timestamp with time zone");
 
         builder.Property(t => t.DateCreated)
             .IsRequired()
@@ -97,10 +103,10 @@ public partial class LevelItemMap
             .HasColumnType("timestamp with time zone");
 
         // relationships
-        builder.HasOne(t => t.MetadataLevelMetadata)
-            .WithMany(t => t.MetadataLevelItems)
-            .HasForeignKey(d => d.MetadataId)
-            .HasConstraintName("levels_metadata_id_fkey");
+        builder.HasOne(t => t.Level)
+            .WithMany(t => t.LevelItems)
+            .HasForeignKey(d => d.IdLevel)
+            .HasConstraintName("level_item_id_level_fkey");
 
         #endregion
     }
@@ -115,19 +121,20 @@ public partial class LevelItemMap
     public readonly struct Columns
     {
         public const string Id = "id";
-        public const string Name = "name";
-        public const string ImageUrl = "image_url";
-        public const string CreatedAt = "created_at";
-        public const string UpdatedAt = "updated_at";
+        public const string IdLevel = "id_level";
         public const string WorkshopId = "workshop_id";
         public const string AuthorId = "author_id";
-        public const string FileHash = "file_hash";
-        public const string FileUrl = "file_url";
+        public const string Name = "name";
+        public const string ImageUrl = "image_url";
         public const string FileAuthor = "file_author";
         public const string FileUid = "file_uid";
-        public const string ReplacedBy = "replaced_by";
+        public const string ValidationTimeAuthor = "validation_time_author";
+        public const string ValidationTimeGold = "validation_time_gold";
+        public const string ValidationTimeSilver = "validation_time_silver";
+        public const string ValidationTimeBronze = "validation_time_bronze";
         public const string Deleted = "deleted";
-        public const string MetadataId = "metadata_id";
+        public const string CreatedAt = "created_at";
+        public const string UpdatedAt = "updated_at";
         public const string DateCreated = "date_created";
         public const string DateUpdated = "date_updated";
     }

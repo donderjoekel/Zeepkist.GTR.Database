@@ -23,14 +23,13 @@ public partial class WorldRecordWeeklyMap
             .HasColumnType("integer")
             .ValueGeneratedOnAdd();
 
-        builder.Property(t => t.Record)
+        builder.Property(t => t.IdRecord)
             .IsRequired()
-            .HasColumnName("record")
+            .HasColumnName("id_record")
             .HasColumnType("integer");
 
-        builder.Property(t => t.Level)
-            .IsRequired()
-            .HasColumnName("level")
+        builder.Property(t => t.IdLevel)
+            .HasColumnName("id_level")
             .HasColumnType("integer");
 
         builder.Property(t => t.DateCreated)
@@ -53,15 +52,15 @@ public partial class WorldRecordWeeklyMap
             .HasColumnType("integer");
 
         // relationships
-        builder.HasOne(t => t.Record1)
+        builder.HasOne(t => t.Record)
             .WithMany(t => t.WorldRecordWeeklies)
-            .HasForeignKey(d => d.Record)
+            .HasForeignKey(d => d.IdRecord)
             .HasConstraintName("world_records_weekly_record_fkey");
 
-        builder.HasOne(t => t.LevelLevelMetadata)
-            .WithMany(t => t.LevelWorldRecordWeeklies)
-            .HasForeignKey(d => d.Level)
-            .HasConstraintName("world_records_weekly_level_fkey");
+        builder.HasOne(t => t.Level)
+            .WithMany(t => t.WorldRecordWeeklies)
+            .HasForeignKey(d => d.IdLevel)
+            .HasConstraintName("world_record_weekly_level_fkey");
 
         #endregion
     }
@@ -76,8 +75,8 @@ public partial class WorldRecordWeeklyMap
     public readonly struct Columns
     {
         public const string Id = "id";
-        public const string Record = "record";
-        public const string Level = "level";
+        public const string IdRecord = "id_record";
+        public const string IdLevel = "id_level";
         public const string DateCreated = "date_created";
         public const string DateUpdated = "date_updated";
         public const string Year = "year";
