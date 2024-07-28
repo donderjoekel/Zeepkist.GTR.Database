@@ -56,7 +56,7 @@ public partial class LevelMetadataMap
         builder.Property(t => t.Blocks)
             .IsRequired()
             .HasColumnName("blocks")
-            .HasColumnType("text");
+            .HasColumnType("jsonb");
 
         builder.Property(t => t.DateCreated)
             .IsRequired()
