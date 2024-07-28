@@ -76,8 +76,6 @@ public partial class GTRContext : DbContext
         {
             entity.HasKey(e => e.Id).HasName("levels_pkey");
 
-            entity.Property(e => e.Id).ValueGeneratedNever();
-
             entity.HasOne(d => d.Metadata).WithMany(p => p.Levels)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("levels_metadata_id_fkey");
@@ -97,8 +95,6 @@ public partial class GTRContext : DbContext
         modelBuilder.Entity<Metadata>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("metadata_pkey");
-
-            entity.Property(e => e.Id).ValueGeneratedNever();
         });
 
         modelBuilder.Entity<PersonalBest>(entity =>
