@@ -23,14 +23,14 @@ public partial class UpvoteMap
             .HasColumnType("integer")
             .ValueGeneratedOnAdd();
 
-        builder.Property(t => t.User)
+        builder.Property(t => t.IdUser)
             .IsRequired()
-            .HasColumnName("user")
+            .HasColumnName("id_user")
             .HasColumnType("integer");
 
-        builder.Property(t => t.Level)
+        builder.Property(t => t.IdLevel)
             .IsRequired()
-            .HasColumnName("level")
+            .HasColumnName("id_level")
             .HasColumnType("integer");
 
         builder.Property(t => t.DateCreated)
@@ -43,15 +43,15 @@ public partial class UpvoteMap
             .HasColumnType("timestamp with time zone");
 
         // relationships
-        builder.HasOne(t => t.User1)
+        builder.HasOne(t => t.User)
             .WithMany(t => t.Upvotes)
-            .HasForeignKey(d => d.User)
+            .HasForeignKey(d => d.IdUser)
             .HasConstraintName("upvotes_user_foreign");
 
-        builder.HasOne(t => t.LevelLevelMetadata)
-            .WithMany(t => t.LevelUpvotes)
-            .HasForeignKey(d => d.Level)
-            .HasConstraintName("upvotes_level_fkey");
+        builder.HasOne(t => t.Level)
+            .WithMany(t => t.Upvotes)
+            .HasForeignKey(d => d.IdLevel)
+            .HasConstraintName("upvote_level_fkey");
 
         #endregion
     }
@@ -66,8 +66,8 @@ public partial class UpvoteMap
     public readonly struct Columns
     {
         public const string Id = "id";
-        public const string User = "user";
-        public const string Level = "level";
+        public const string IdUser = "id_user";
+        public const string IdLevel = "id_level";
         public const string DateCreated = "date_created";
         public const string DateUpdated = "date_updated";
     }

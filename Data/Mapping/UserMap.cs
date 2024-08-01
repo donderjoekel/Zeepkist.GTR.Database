@@ -23,18 +23,8 @@ public partial class UserMap
             .HasColumnType("integer")
             .ValueGeneratedOnAdd();
 
-        builder.Property(t => t.SteamId)
-            .HasColumnName("steam_id")
-            .HasColumnType("character varying(255)")
-            .HasMaxLength(255);
-
         builder.Property(t => t.SteamName)
             .HasColumnName("steam_name")
-            .HasColumnType("character varying(255)")
-            .HasMaxLength(255);
-
-        builder.Property(t => t.DiscordId)
-            .HasColumnName("discord_id")
             .HasColumnType("character varying(255)")
             .HasMaxLength(255);
 
@@ -47,14 +37,19 @@ public partial class UserMap
         builder.Property(t => t.DateCreated)
             .IsRequired()
             .HasColumnName("date_created")
-            .HasColumnType("timestamp with time zone")
-            .HasDefaultValueSql("now()");
+            .HasColumnType("timestamp with time zone");
 
         builder.Property(t => t.DateUpdated)
-            .IsRequired()
             .HasColumnName("date_updated")
-            .HasColumnType("timestamp with time zone")
-            .HasDefaultValueSql("now()");
+            .HasColumnType("timestamp with time zone");
+
+        builder.Property(t => t.SteamId)
+            .HasColumnName("steam_id")
+            .HasColumnType("numeric");
+
+        builder.Property(t => t.DiscordId)
+            .HasColumnName("discord_id")
+            .HasColumnType("numeric");
 
         // relationships
         #endregion
@@ -70,12 +65,12 @@ public partial class UserMap
     public readonly struct Columns
     {
         public const string Id = "id";
-        public const string SteamId = "steam_id";
         public const string SteamName = "steam_name";
-        public const string DiscordId = "discord_id";
         public const string Banned = "banned";
         public const string DateCreated = "date_created";
         public const string DateUpdated = "date_updated";
+        public const string SteamId = "steam_id";
+        public const string DiscordId = "discord_id";
     }
     #endregion
 }

@@ -4,14 +4,14 @@ using Microsoft.EntityFrameworkCore;
 
 namespace TNRD.Zeepkist.GTR.Database.Data.Mapping;
 
-public partial class WorldRecordDailyMap
-    : IEntityTypeConfiguration<TNRD.Zeepkist.GTR.Database.Data.Entities.WorldRecordDaily>
+public partial class WorldRecordQuarterlyMap
+    : IEntityTypeConfiguration<TNRD.Zeepkist.GTR.Database.Data.Entities.WorldRecordQuarterly>
 {
-    public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<TNRD.Zeepkist.GTR.Database.Data.Entities.WorldRecordDaily> builder)
+    public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<TNRD.Zeepkist.GTR.Database.Data.Entities.WorldRecordQuarterly> builder)
     {
         #region Generated Configure
         // table
-        builder.ToTable("world_record_daily", "public");
+        builder.ToTable("world_record_quarterly", "public");
 
         // key
         builder.HasKey(t => t.Id);
@@ -47,21 +47,21 @@ public partial class WorldRecordDailyMap
             .HasColumnName("year")
             .HasColumnType("integer");
 
-        builder.Property(t => t.Day)
+        builder.Property(t => t.Quarter)
             .IsRequired()
-            .HasColumnName("day")
+            .HasColumnName("quarter")
             .HasColumnType("integer");
 
         // relationships
-        builder.HasOne(t => t.Record)
-            .WithMany(t => t.WorldRecordDailies)
-            .HasForeignKey(d => d.IdRecord)
-            .HasConstraintName("world_records_daily_record_fkey");
-
         builder.HasOne(t => t.Level)
-            .WithMany(t => t.WorldRecordDailies)
+            .WithMany(t => t.WorldRecordQuarterlies)
             .HasForeignKey(d => d.IdLevel)
-            .HasConstraintName("world_record_daily_level_fkey");
+            .HasConstraintName("world_record_quarterly_level_id_fk");
+
+        builder.HasOne(t => t.Record)
+            .WithMany(t => t.WorldRecordQuarterlies)
+            .HasForeignKey(d => d.IdRecord)
+            .HasConstraintName("world_record_quarterly_record_id_fk");
 
         #endregion
     }
@@ -70,7 +70,7 @@ public partial class WorldRecordDailyMap
     public readonly struct Table
     {
         public const string Schema = "public";
-        public const string Name = "world_record_daily";
+        public const string Name = "world_record_quarterly";
     }
 
     public readonly struct Columns
@@ -81,7 +81,7 @@ public partial class WorldRecordDailyMap
         public const string DateCreated = "date_created";
         public const string DateUpdated = "date_updated";
         public const string Year = "year";
-        public const string Day = "day";
+        public const string Quarter = "quarter";
     }
     #endregion
 }

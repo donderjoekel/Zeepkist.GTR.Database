@@ -23,19 +23,15 @@ public partial class RecordMap
             .HasColumnType("integer")
             .ValueGeneratedOnAdd();
 
-        builder.Property(t => t.User)
+        builder.Property(t => t.IdUser)
             .IsRequired()
-            .HasColumnName("user")
+            .HasColumnName("id_user")
             .HasColumnType("integer");
 
         builder.Property(t => t.Time)
             .IsRequired()
             .HasColumnName("time")
             .HasColumnType("real");
-
-        builder.Property(t => t.Splits)
-            .HasColumnName("splits")
-            .HasColumnType("text");
 
         builder.Property(t => t.GameVersion)
             .IsRequired()
@@ -48,15 +44,16 @@ public partial class RecordMap
             .HasColumnName("is_valid")
             .HasColumnType("boolean");
 
-        builder.Property(t => t.Level)
+        builder.Property(t => t.IdLevel)
             .IsRequired()
-            .HasColumnName("level")
+            .HasColumnName("id_level")
             .HasColumnType("integer");
 
         builder.Property(t => t.ModVersion)
             .IsRequired()
             .HasColumnName("mod_version")
-            .HasColumnType("text");
+            .HasColumnType("character varying(255)")
+            .HasMaxLength(255);
 
         builder.Property(t => t.DateCreated)
             .IsRequired()
@@ -64,20 +61,27 @@ public partial class RecordMap
             .HasColumnType("timestamp with time zone");
 
         builder.Property(t => t.DateUpdated)
-            .IsRequired()
             .HasColumnName("date_updated")
             .HasColumnType("timestamp with time zone");
 
+        builder.Property(t => t.Splits)
+            .HasColumnName("splits")
+            .HasColumnType("real[]");
+
+        builder.Property(t => t.Speeds)
+            .HasColumnName("speeds")
+            .HasColumnType("real[]");
+
         // relationships
-        builder.HasOne(t => t.User1)
+        builder.HasOne(t => t.User)
             .WithMany(t => t.Records)
-            .HasForeignKey(d => d.User)
+            .HasForeignKey(d => d.IdUser)
             .HasConstraintName("records_user_foreign");
 
-        builder.HasOne(t => t.LevelLevelMetadata)
-            .WithMany(t => t.LevelRecords)
-            .HasForeignKey(d => d.Level)
-            .HasConstraintName("records_level_fkey");
+        builder.HasOne(t => t.Level)
+            .WithMany(t => t.Records)
+            .HasForeignKey(d => d.IdLevel)
+            .HasConstraintName("record_level_fkey");
 
         #endregion
     }
@@ -92,15 +96,16 @@ public partial class RecordMap
     public readonly struct Columns
     {
         public const string Id = "id";
-        public const string User = "user";
+        public const string IdUser = "id_user";
         public const string Time = "time";
-        public const string Splits = "splits";
         public const string GameVersion = "game_version";
         public const string IsValid = "is_valid";
-        public const string Level = "level";
+        public const string IdLevel = "id_level";
         public const string ModVersion = "mod_version";
         public const string DateCreated = "date_created";
         public const string DateUpdated = "date_updated";
+        public const string Splits = "splits";
+        public const string Speeds = "speeds";
     }
     #endregion
 }

@@ -23,9 +23,9 @@ public partial class UserPointsMap
             .HasColumnType("integer")
             .ValueGeneratedOnAdd();
 
-        builder.Property(t => t.User)
+        builder.Property(t => t.IdUser)
             .IsRequired()
-            .HasColumnName("user")
+            .HasColumnName("id_user")
             .HasColumnType("integer");
 
         builder.Property(t => t.Points)
@@ -54,9 +54,9 @@ public partial class UserPointsMap
             .HasDefaultValue(0);
 
         // relationships
-        builder.HasOne(t => t.User1)
+        builder.HasOne(t => t.User)
             .WithMany(t => t.UserPoints)
-            .HasForeignKey(d => d.User)
+            .HasForeignKey(d => d.IdUser)
             .HasConstraintName("player_points_user_fkey");
 
         #endregion
@@ -72,7 +72,7 @@ public partial class UserPointsMap
     public readonly struct Columns
     {
         public const string Id = "id";
-        public const string User = "user";
+        public const string IdUser = "id_user";
         public const string Points = "points";
         public const string DateCreated = "date_created";
         public const string DateUpdated = "date_updated";

@@ -1,77 +1,75 @@
-using System;
-using System.Collections.Generic;
-
 namespace TNRD.Zeepkist.GTR.Database.Data.Entities;
 
 public partial class Record
+    : IEntity, global::JsonApiDotNetCore.Resources.IIdentifiable<int>
 {
     public Record()
     {
         #region Generated Constructor
-        PersonalBestDailies = new HashSet<PersonalBestDaily>();
-        PersonalBestGlobals = new HashSet<PersonalBestGlobal>();
-        PersonalBestMonthlies = new HashSet<PersonalBestMonthly>();
-        PersonalBestWeeklies = new HashSet<PersonalBestWeekly>();
-        PersonalBestYearlies = new HashSet<PersonalBestYearly>();
-        RecordMedia = new HashSet<RecordMedia>();
-        WorldRecordDailies = new HashSet<WorldRecordDaily>();
-        WorldRecordGlobals = new HashSet<WorldRecordGlobal>();
-        WorldRecordMonthlies = new HashSet<WorldRecordMonthly>();
-        WorldRecordWeeklies = new HashSet<WorldRecordWeekly>();
-        WorldRecordYearlies = new HashSet<WorldRecordYearly>();
+        PersonalBestDailies = new global::System.Collections.Generic.HashSet<TNRD.Zeepkist.GTR.Database.Data.Entities.PersonalBestDaily>();
+        PersonalBestGlobals = new global::System.Collections.Generic.HashSet<TNRD.Zeepkist.GTR.Database.Data.Entities.PersonalBestGlobal>();
+        PersonalBestMonthlies = new global::System.Collections.Generic.HashSet<TNRD.Zeepkist.GTR.Database.Data.Entities.PersonalBestMonthly>();
+        PersonalBestQuarterlies = new global::System.Collections.Generic.HashSet<TNRD.Zeepkist.GTR.Database.Data.Entities.PersonalBestQuarterly>();
+        PersonalBestWeeklies = new global::System.Collections.Generic.HashSet<TNRD.Zeepkist.GTR.Database.Data.Entities.PersonalBestWeekly>();
+        PersonalBestYearlies = new global::System.Collections.Generic.HashSet<TNRD.Zeepkist.GTR.Database.Data.Entities.PersonalBestYearly>();
+        RecordMedia = new global::System.Collections.Generic.HashSet<TNRD.Zeepkist.GTR.Database.Data.Entities.RecordMedia>();
+        WorldRecordDailies = new global::System.Collections.Generic.HashSet<TNRD.Zeepkist.GTR.Database.Data.Entities.WorldRecordDaily>();
+        WorldRecordGlobals = new global::System.Collections.Generic.HashSet<TNRD.Zeepkist.GTR.Database.Data.Entities.WorldRecordGlobal>();
+        WorldRecordMonthlies = new global::System.Collections.Generic.HashSet<TNRD.Zeepkist.GTR.Database.Data.Entities.WorldRecordMonthly>();
+        WorldRecordQuarterlies = new global::System.Collections.Generic.HashSet<TNRD.Zeepkist.GTR.Database.Data.Entities.WorldRecordQuarterly>();
+        WorldRecordWeeklies = new global::System.Collections.Generic.HashSet<TNRD.Zeepkist.GTR.Database.Data.Entities.WorldRecordWeekly>();
+        WorldRecordYearlies = new global::System.Collections.Generic.HashSet<TNRD.Zeepkist.GTR.Database.Data.Entities.WorldRecordYearly>();
         #endregion
     }
 
     #region Generated Properties
-    public int Id { get; set; }
-
-    public int User { get; set; }
-
-    public float Time { get; set; }
-
-    public string? Splits { get; set; }
-
-    public string GameVersion { get; set; } = null!;
-
-    public bool IsValid { get; set; }
-
-    public int Level { get; set; }
-
-    public string ModVersion { get; set; } = null!;
-
-    public DateTime DateCreated { get; set; }
-
-    public DateTime DateUpdated { get; set; }
-
+    [global::JsonApiDotNetCore.Resources.Annotations.AttrAttribute] public int Id { get; set; }
+    [global::JsonApiDotNetCore.Resources.Annotations.AttrAttribute] public int IdUser { get; set; }
+    [global::JsonApiDotNetCore.Resources.Annotations.AttrAttribute] public float Time { get; set; }
+    [global::JsonApiDotNetCore.Resources.Annotations.AttrAttribute] public string GameVersion { get; set; } = null!;
+    [global::JsonApiDotNetCore.Resources.Annotations.AttrAttribute] public bool IsValid { get; set; }
+    [global::JsonApiDotNetCore.Resources.Annotations.AttrAttribute] public int IdLevel { get; set; }
+    [global::JsonApiDotNetCore.Resources.Annotations.AttrAttribute] public string ModVersion { get; set; } = null!;
+    [global::JsonApiDotNetCore.Resources.Annotations.AttrAttribute] public global::System.DateTime DateCreated { get; set; }
+    [global::JsonApiDotNetCore.Resources.Annotations.AttrAttribute] public global::System.DateTime? DateUpdated { get; set; }
+    [global::JsonApiDotNetCore.Resources.Annotations.AttrAttribute] public global::System.Collections.Generic.List<float>? Splits { get; set; }
+    [global::JsonApiDotNetCore.Resources.Annotations.AttrAttribute] public global::System.Collections.Generic.List<float>? Speeds { get; set; }
     #endregion
 
     #region Generated Relationships
-    public virtual LevelMetadata LevelLevelMetadata { get; set; } = null!;
+    [global::JsonApiDotNetCore.Resources.Annotations.HasOneAttribute] public virtual global::TNRD.Zeepkist.GTR.Database.Data.Entities.Level Level { get; set; } = null!;
+    [global::JsonApiDotNetCore.Resources.Annotations.HasManyAttribute] public virtual global::System.Collections.Generic.ICollection<TNRD.Zeepkist.GTR.Database.Data.Entities.PersonalBestDaily> PersonalBestDailies { get; set; }
+    [global::JsonApiDotNetCore.Resources.Annotations.HasManyAttribute] public virtual global::System.Collections.Generic.ICollection<TNRD.Zeepkist.GTR.Database.Data.Entities.PersonalBestGlobal> PersonalBestGlobals { get; set; }
+    [global::JsonApiDotNetCore.Resources.Annotations.HasManyAttribute] public virtual global::System.Collections.Generic.ICollection<TNRD.Zeepkist.GTR.Database.Data.Entities.PersonalBestMonthly> PersonalBestMonthlies { get; set; }
+    [global::JsonApiDotNetCore.Resources.Annotations.HasManyAttribute] public virtual global::System.Collections.Generic.ICollection<TNRD.Zeepkist.GTR.Database.Data.Entities.PersonalBestQuarterly> PersonalBestQuarterlies { get; set; }
+    [global::JsonApiDotNetCore.Resources.Annotations.HasManyAttribute] public virtual global::System.Collections.Generic.ICollection<TNRD.Zeepkist.GTR.Database.Data.Entities.PersonalBestWeekly> PersonalBestWeeklies { get; set; }
+    [global::JsonApiDotNetCore.Resources.Annotations.HasManyAttribute] public virtual global::System.Collections.Generic.ICollection<TNRD.Zeepkist.GTR.Database.Data.Entities.PersonalBestYearly> PersonalBestYearlies { get; set; }
+    [global::JsonApiDotNetCore.Resources.Annotations.HasManyAttribute] public virtual global::System.Collections.Generic.ICollection<TNRD.Zeepkist.GTR.Database.Data.Entities.RecordMedia> RecordMedia { get; set; }
+    [global::JsonApiDotNetCore.Resources.Annotations.HasOneAttribute] public virtual global::TNRD.Zeepkist.GTR.Database.Data.Entities.User User { get; set; } = null!;
+    [global::JsonApiDotNetCore.Resources.Annotations.HasManyAttribute] public virtual global::System.Collections.Generic.ICollection<TNRD.Zeepkist.GTR.Database.Data.Entities.WorldRecordDaily> WorldRecordDailies { get; set; }
+    [global::JsonApiDotNetCore.Resources.Annotations.HasManyAttribute] public virtual global::System.Collections.Generic.ICollection<TNRD.Zeepkist.GTR.Database.Data.Entities.WorldRecordGlobal> WorldRecordGlobals { get; set; }
+    [global::JsonApiDotNetCore.Resources.Annotations.HasManyAttribute] public virtual global::System.Collections.Generic.ICollection<TNRD.Zeepkist.GTR.Database.Data.Entities.WorldRecordMonthly> WorldRecordMonthlies { get; set; }
+    [global::JsonApiDotNetCore.Resources.Annotations.HasManyAttribute] public virtual global::System.Collections.Generic.ICollection<TNRD.Zeepkist.GTR.Database.Data.Entities.WorldRecordQuarterly> WorldRecordQuarterlies { get; set; }
+    [global::JsonApiDotNetCore.Resources.Annotations.HasManyAttribute] public virtual global::System.Collections.Generic.ICollection<TNRD.Zeepkist.GTR.Database.Data.Entities.WorldRecordWeekly> WorldRecordWeeklies { get; set; }
+    [global::JsonApiDotNetCore.Resources.Annotations.HasManyAttribute] public virtual global::System.Collections.Generic.ICollection<TNRD.Zeepkist.GTR.Database.Data.Entities.WorldRecordYearly> WorldRecordYearlies { get; set; }
+    #endregion
 
-    public virtual ICollection<PersonalBestDaily> PersonalBestDailies { get; set; }
-
-    public virtual ICollection<PersonalBestGlobal> PersonalBestGlobals { get; set; }
-
-    public virtual ICollection<PersonalBestMonthly> PersonalBestMonthlies { get; set; }
-
-    public virtual ICollection<PersonalBestWeekly> PersonalBestWeeklies { get; set; }
-
-    public virtual ICollection<PersonalBestYearly> PersonalBestYearlies { get; set; }
-
-    public virtual ICollection<RecordMedia> RecordMedia { get; set; }
-
-    public virtual User User1 { get; set; } = null!;
-
-    public virtual ICollection<WorldRecordDaily> WorldRecordDailies { get; set; }
-
-    public virtual ICollection<WorldRecordGlobal> WorldRecordGlobals { get; set; }
-
-    public virtual ICollection<WorldRecordMonthly> WorldRecordMonthlies { get; set; }
-
-    public virtual ICollection<WorldRecordWeekly> WorldRecordWeeklies { get; set; }
-
-    public virtual ICollection<WorldRecordYearly> WorldRecordYearlies { get; set; }
-
+    #region Generated IIdentifiable Properties
+    string global::JsonApiDotNetCore.Resources.IIdentifiable.StringId
+    {
+        get => Id.ToString();
+        set { }
+    }
+    string global::JsonApiDotNetCore.Resources.IIdentifiable.LocalId
+    {
+        get => null;
+        set { }
+    }
+    int global::JsonApiDotNetCore.Resources.IIdentifiable<int>.Id
+    {
+        get => Id;
+        set { }
+    }
     #endregion
 
 }

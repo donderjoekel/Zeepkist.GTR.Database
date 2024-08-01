@@ -23,19 +23,18 @@ public partial class StatsYearlyMap
             .HasColumnType("integer")
             .ValueGeneratedOnAdd();
 
-        builder.Property(t => t.User)
+        builder.Property(t => t.IdUser)
             .IsRequired()
-            .HasColumnName("user")
+            .HasColumnName("id_user")
             .HasColumnType("integer");
 
-        builder.Property(t => t.Level)
-            .IsRequired()
-            .HasColumnName("level")
+        builder.Property(t => t.IdLevel)
+            .HasColumnName("id_level")
             .HasColumnType("integer");
 
-        builder.Property(t => t.Data)
+        builder.Property(t => t.Key)
             .IsRequired()
-            .HasColumnName("data")
+            .HasColumnName("key")
             .HasColumnType("text");
 
         builder.Property(t => t.DateCreated)
@@ -51,15 +50,20 @@ public partial class StatsYearlyMap
             .HasColumnName("year")
             .HasColumnType("integer");
 
+        builder.Property(t => t.Value)
+            .IsRequired()
+            .HasColumnName("value")
+            .HasColumnType("numeric");
+
         // relationships
-        builder.HasOne(t => t.User1)
+        builder.HasOne(t => t.User)
             .WithMany(t => t.StatsYearlies)
-            .HasForeignKey(d => d.User)
+            .HasForeignKey(d => d.IdUser)
             .HasConstraintName("stats_yearly_user_fkey");
 
-        builder.HasOne(t => t.LevelLevelMetadata)
-            .WithMany(t => t.LevelStatsYearlies)
-            .HasForeignKey(d => d.Level)
+        builder.HasOne(t => t.Level)
+            .WithMany(t => t.StatsYearlies)
+            .HasForeignKey(d => d.IdLevel)
             .HasConstraintName("stats_yearly_level_fkey");
 
         #endregion
@@ -75,12 +79,13 @@ public partial class StatsYearlyMap
     public readonly struct Columns
     {
         public const string Id = "id";
-        public const string User = "user";
-        public const string Level = "level";
-        public const string Data = "data";
+        public const string IdUser = "id_user";
+        public const string IdLevel = "id_level";
+        public const string Key = "key";
         public const string DateCreated = "date_created";
         public const string DateUpdated = "date_updated";
         public const string Year = "year";
+        public const string Value = "value";
     }
     #endregion
 }

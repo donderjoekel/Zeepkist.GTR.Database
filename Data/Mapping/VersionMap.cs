@@ -34,14 +34,11 @@ public partial class VersionMap
         builder.Property(t => t.DateCreated)
             .IsRequired()
             .HasColumnName("date_created")
-            .HasColumnType("timestamp with time zone")
-            .HasDefaultValueSql("now()");
+            .HasColumnType("timestamp with time zone");
 
         builder.Property(t => t.DateUpdated)
-            .IsRequired()
             .HasColumnName("date_updated")
-            .HasColumnType("timestamp with time zone")
-            .HasDefaultValueSql("now()");
+            .HasColumnType("timestamp with time zone");
 
         // relationships
         #endregion

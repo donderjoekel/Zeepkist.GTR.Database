@@ -1,9 +1,7 @@
-using System;
-using System.Collections.Generic;
-
 namespace TNRD.Zeepkist.GTR.Database.Data.Entities;
 
 public partial class Version
+    : IEntity, global::JsonApiDotNetCore.Resources.IIdentifiable<int>
 {
     public Version()
     {
@@ -12,19 +10,32 @@ public partial class Version
     }
 
     #region Generated Properties
-    public int Id { get; set; }
-
-    public string? Minimum { get; set; }
-
-    public string? Latest { get; set; }
-
-    public DateTime DateCreated { get; set; }
-
-    public DateTime DateUpdated { get; set; }
-
+    [global::JsonApiDotNetCore.Resources.Annotations.AttrAttribute] public int Id { get; set; }
+    [global::JsonApiDotNetCore.Resources.Annotations.AttrAttribute] public string? Minimum { get; set; }
+    [global::JsonApiDotNetCore.Resources.Annotations.AttrAttribute] public string? Latest { get; set; }
+    [global::JsonApiDotNetCore.Resources.Annotations.AttrAttribute] public global::System.DateTime DateCreated { get; set; }
+    [global::JsonApiDotNetCore.Resources.Annotations.AttrAttribute] public global::System.DateTime? DateUpdated { get; set; }
     #endregion
 
     #region Generated Relationships
+    #endregion
+
+    #region Generated IIdentifiable Properties
+    string global::JsonApiDotNetCore.Resources.IIdentifiable.StringId
+    {
+        get => Id.ToString();
+        set { }
+    }
+    string global::JsonApiDotNetCore.Resources.IIdentifiable.LocalId
+    {
+        get => null;
+        set { }
+    }
+    int global::JsonApiDotNetCore.Resources.IIdentifiable<int>.Id
+    {
+        get => Id;
+        set { }
+    }
     #endregion
 
 }

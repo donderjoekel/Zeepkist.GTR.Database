@@ -4,14 +4,14 @@ using Microsoft.EntityFrameworkCore;
 
 namespace TNRD.Zeepkist.GTR.Database.Data.Mapping;
 
-public partial class WorldRecordDailyMap
-    : IEntityTypeConfiguration<TNRD.Zeepkist.GTR.Database.Data.Entities.WorldRecordDaily>
+public partial class StatsQuarterlyMap
+    : IEntityTypeConfiguration<TNRD.Zeepkist.GTR.Database.Data.Entities.StatsQuarterly>
 {
-    public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<TNRD.Zeepkist.GTR.Database.Data.Entities.WorldRecordDaily> builder)
+    public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<TNRD.Zeepkist.GTR.Database.Data.Entities.StatsQuarterly> builder)
     {
         #region Generated Configure
         // table
-        builder.ToTable("world_record_daily", "public");
+        builder.ToTable("stats_quarterly", "public");
 
         // key
         builder.HasKey(t => t.Id);
@@ -23,15 +23,19 @@ public partial class WorldRecordDailyMap
             .HasColumnType("integer")
             .ValueGeneratedOnAdd();
 
-        builder.Property(t => t.IdRecord)
+        builder.Property(t => t.IdUser)
             .IsRequired()
-            .HasColumnName("id_record")
+            .HasColumnName("id_user")
             .HasColumnType("integer");
 
         builder.Property(t => t.IdLevel)
-            .IsRequired()
             .HasColumnName("id_level")
             .HasColumnType("integer");
+
+        builder.Property(t => t.Key)
+            .IsRequired()
+            .HasColumnName("key")
+            .HasColumnType("text");
 
         builder.Property(t => t.DateCreated)
             .IsRequired()
@@ -47,21 +51,26 @@ public partial class WorldRecordDailyMap
             .HasColumnName("year")
             .HasColumnType("integer");
 
-        builder.Property(t => t.Day)
+        builder.Property(t => t.Quarter)
             .IsRequired()
-            .HasColumnName("day")
+            .HasColumnName("quarter")
             .HasColumnType("integer");
 
-        // relationships
-        builder.HasOne(t => t.Record)
-            .WithMany(t => t.WorldRecordDailies)
-            .HasForeignKey(d => d.IdRecord)
-            .HasConstraintName("world_records_daily_record_fkey");
+        builder.Property(t => t.Value)
+            .IsRequired()
+            .HasColumnName("value")
+            .HasColumnType("numeric");
 
+        // relationships
         builder.HasOne(t => t.Level)
-            .WithMany(t => t.WorldRecordDailies)
+            .WithMany(t => t.StatsQuarterlies)
             .HasForeignKey(d => d.IdLevel)
-            .HasConstraintName("world_record_daily_level_fkey");
+            .HasConstraintName("stats_quarterly_level_id_fk");
+
+        builder.HasOne(t => t.User)
+            .WithMany(t => t.StatsQuarterlies)
+            .HasForeignKey(d => d.IdUser)
+            .HasConstraintName("stats_quarterly_user_id_fk");
 
         #endregion
     }
@@ -70,18 +79,20 @@ public partial class WorldRecordDailyMap
     public readonly struct Table
     {
         public const string Schema = "public";
-        public const string Name = "world_record_daily";
+        public const string Name = "stats_quarterly";
     }
 
     public readonly struct Columns
     {
         public const string Id = "id";
-        public const string IdRecord = "id_record";
+        public const string IdUser = "id_user";
         public const string IdLevel = "id_level";
+        public const string Key = "key";
         public const string DateCreated = "date_created";
         public const string DateUpdated = "date_updated";
         public const string Year = "year";
-        public const string Day = "day";
+        public const string Quarter = "quarter";
+        public const string Value = "value";
     }
     #endregion
 }

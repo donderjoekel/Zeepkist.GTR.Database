@@ -1,9 +1,9 @@
 namespace TNRD.Zeepkist.GTR.Database.Data.Entities;
 
-public partial class WorldRecordMonthly
+public partial class WorldRecordQuarterly
     : IEntity, global::JsonApiDotNetCore.Resources.IIdentifiable<int>
 {
-    public WorldRecordMonthly()
+    public WorldRecordQuarterly()
     {
         #region Generated Constructor
         #endregion
@@ -16,7 +16,7 @@ public partial class WorldRecordMonthly
     [global::JsonApiDotNetCore.Resources.Annotations.AttrAttribute] public global::System.DateTime DateCreated { get; set; }
     [global::JsonApiDotNetCore.Resources.Annotations.AttrAttribute] public global::System.DateTime? DateUpdated { get; set; }
     [global::JsonApiDotNetCore.Resources.Annotations.AttrAttribute] public int Year { get; set; }
-    [global::JsonApiDotNetCore.Resources.Annotations.AttrAttribute] public int Month { get; set; }
+    [global::JsonApiDotNetCore.Resources.Annotations.AttrAttribute] public int Quarter { get; set; }
     #endregion
 
     #region Generated Relationships
