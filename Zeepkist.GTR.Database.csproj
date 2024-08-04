@@ -6,7 +6,7 @@
         <Nullable>enable</Nullable>
         <AssemblyName>TNRD.Zeepkist.GTR.Database</AssemblyName>
         <RootNamespace>TNRD.Zeepkist.GTR.Database</RootNamespace>
-        <Version>4.0.2</Version>
+        <Version>4.0.3</Version>
     </PropertyGroup>
 
     <ItemGroup>
