@@ -30,14 +30,14 @@ public partial class User
     [global::JsonApiDotNetCore.Resources.Annotations.AttrAttribute] public int Id { get; set; }
     [global::JsonApiDotNetCore.Resources.Annotations.AttrAttribute] public string? SteamName { get; set; }
     [global::JsonApiDotNetCore.Resources.Annotations.AttrAttribute] public bool Banned { get; set; }
-    [global::JsonApiDotNetCore.Resources.Annotations.AttrAttribute] public global::System.DateTime DateCreated { get; set; }
-    [global::JsonApiDotNetCore.Resources.Annotations.AttrAttribute] public global::System.DateTime? DateUpdated { get; set; }
+    [global::JsonApiDotNetCore.Resources.Annotations.AttrAttribute] public global::System.DateTimeOffset DateCreated { get; set; }
+    [global::JsonApiDotNetCore.Resources.Annotations.AttrAttribute] public global::System.DateTimeOffset? DateUpdated { get; set; }
     [global::JsonApiDotNetCore.Resources.Annotations.AttrAttribute] public decimal? SteamId { get; set; }
     [global::JsonApiDotNetCore.Resources.Annotations.AttrAttribute] public decimal? DiscordId { get; set; }
     #endregion
 
     #region Generated Relationships
-    public virtual global::System.Collections.Generic.ICollection<TNRD.Zeepkist.GTR.Database.Data.Entities.Auth> Auths { get; set; }
+    [global::JsonApiDotNetCore.Resources.Annotations.HasManyAttribute] public virtual global::System.Collections.Generic.ICollection<TNRD.Zeepkist.GTR.Database.Data.Entities.Auth> Auths { get; set; }
     [global::JsonApiDotNetCore.Resources.Annotations.HasManyAttribute] public virtual global::System.Collections.Generic.ICollection<TNRD.Zeepkist.GTR.Database.Data.Entities.Favorite> Favorites { get; set; }
     [global::JsonApiDotNetCore.Resources.Annotations.HasManyAttribute] public virtual global::System.Collections.Generic.ICollection<TNRD.Zeepkist.GTR.Database.Data.Entities.PersonalBestDaily> PersonalBestDailies { get; set; }
     [global::JsonApiDotNetCore.Resources.Annotations.HasManyAttribute] public virtual global::System.Collections.Generic.ICollection<TNRD.Zeepkist.GTR.Database.Data.Entities.PersonalBestGlobal> PersonalBestGlobals { get; set; }

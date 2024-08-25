@@ -17,8 +17,8 @@ public partial class Auth
     [global::JsonApiDotNetCore.Resources.Annotations.AttrAttribute] public string? RefreshToken { get; set; }
     [global::JsonApiDotNetCore.Resources.Annotations.AttrAttribute] public long? RefreshTokenExpiry { get; set; }
     [global::JsonApiDotNetCore.Resources.Annotations.AttrAttribute] public int? Type { get; set; }
-    [global::JsonApiDotNetCore.Resources.Annotations.AttrAttribute] public global::System.DateTime DateCreated { get; set; }
-    [global::JsonApiDotNetCore.Resources.Annotations.AttrAttribute] public global::System.DateTime? DateUpdated { get; set; }
+    [global::JsonApiDotNetCore.Resources.Annotations.AttrAttribute] public global::System.DateTimeOffset DateCreated { get; set; }
+    [global::JsonApiDotNetCore.Resources.Annotations.AttrAttribute] public global::System.DateTimeOffset? DateUpdated { get; set; }
     #endregion
 
     #region Generated Relationships

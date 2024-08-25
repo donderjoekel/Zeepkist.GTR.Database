@@ -14,8 +14,8 @@ public partial class LevelRequest
     [global::JsonApiDotNetCore.Resources.Annotations.AttrAttribute] public decimal WorkshopId { get; set; }
     [global::JsonApiDotNetCore.Resources.Annotations.AttrAttribute] public string? Uid { get; set; }
     [global::JsonApiDotNetCore.Resources.Annotations.AttrAttribute] public string? Hash { get; set; }
-    [global::JsonApiDotNetCore.Resources.Annotations.AttrAttribute] public global::System.DateTime DateCreated { get; set; }
-    [global::JsonApiDotNetCore.Resources.Annotations.AttrAttribute] public global::System.DateTime? DateUpdated { get; set; }
+    [global::JsonApiDotNetCore.Resources.Annotations.AttrAttribute] public global::System.DateTimeOffset DateCreated { get; set; }
+    [global::JsonApiDotNetCore.Resources.Annotations.AttrAttribute] public global::System.DateTimeOffset? DateUpdated { get; set; }
     #endregion
 
     #region Generated Relationships

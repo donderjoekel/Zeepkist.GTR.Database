@@ -14,8 +14,8 @@ public partial class RecordMedia
     [global::JsonApiDotNetCore.Resources.Annotations.AttrAttribute] public int IdRecord { get; set; }
     [global::JsonApiDotNetCore.Resources.Annotations.AttrAttribute] public string? GhostUrl { get; set; }
     [global::JsonApiDotNetCore.Resources.Annotations.AttrAttribute] public string? ScreenshotUrl { get; set; }
-    [global::JsonApiDotNetCore.Resources.Annotations.AttrAttribute] public global::System.DateTime DateCreated { get; set; }
-    [global::JsonApiDotNetCore.Resources.Annotations.AttrAttribute] public global::System.DateTime? DateUpdated { get; set; }
+    [global::JsonApiDotNetCore.Resources.Annotations.AttrAttribute] public global::System.DateTimeOffset DateCreated { get; set; }
+    [global::JsonApiDotNetCore.Resources.Annotations.AttrAttribute] public global::System.DateTimeOffset? DateUpdated { get; set; }
     #endregion
 
     #region Generated Relationships

@@ -13,8 +13,8 @@ public partial class WorldRecordGlobal
     [global::JsonApiDotNetCore.Resources.Annotations.AttrAttribute] public int Id { get; set; }
     [global::JsonApiDotNetCore.Resources.Annotations.AttrAttribute] public int IdRecord { get; set; }
     [global::JsonApiDotNetCore.Resources.Annotations.AttrAttribute] public int IdLevel { get; set; }
-    [global::JsonApiDotNetCore.Resources.Annotations.AttrAttribute] public global::System.DateTime DateCreated { get; set; }
-    [global::JsonApiDotNetCore.Resources.Annotations.AttrAttribute] public global::System.DateTime? DateUpdated { get; set; }
+    [global::JsonApiDotNetCore.Resources.Annotations.AttrAttribute] public global::System.DateTimeOffset DateCreated { get; set; }
+    [global::JsonApiDotNetCore.Resources.Annotations.AttrAttribute] public global::System.DateTimeOffset? DateUpdated { get; set; }
     #endregion
 
     #region Generated Relationships

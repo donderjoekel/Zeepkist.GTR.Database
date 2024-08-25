@@ -23,10 +23,10 @@ public partial class LevelItem
     [global::JsonApiDotNetCore.Resources.Annotations.AttrAttribute] public float ValidationTimeSilver { get; set; }
     [global::JsonApiDotNetCore.Resources.Annotations.AttrAttribute] public float ValidationTimeBronze { get; set; }
     [global::JsonApiDotNetCore.Resources.Annotations.AttrAttribute] public bool Deleted { get; set; }
-    [global::JsonApiDotNetCore.Resources.Annotations.AttrAttribute] public global::System.DateTime CreatedAt { get; set; }
-    [global::JsonApiDotNetCore.Resources.Annotations.AttrAttribute] public global::System.DateTime UpdatedAt { get; set; }
-    [global::JsonApiDotNetCore.Resources.Annotations.AttrAttribute] public global::System.DateTime DateCreated { get; set; }
-    [global::JsonApiDotNetCore.Resources.Annotations.AttrAttribute] public global::System.DateTime? DateUpdated { get; set; }
+    [global::JsonApiDotNetCore.Resources.Annotations.AttrAttribute] public global::System.DateTimeOffset CreatedAt { get; set; }
+    [global::JsonApiDotNetCore.Resources.Annotations.AttrAttribute] public global::System.DateTimeOffset UpdatedAt { get; set; }
+    [global::JsonApiDotNetCore.Resources.Annotations.AttrAttribute] public global::System.DateTimeOffset DateCreated { get; set; }
+    [global::JsonApiDotNetCore.Resources.Annotations.AttrAttribute] public global::System.DateTimeOffset? DateUpdated { get; set; }
     #endregion
 
     #region Generated Relationships

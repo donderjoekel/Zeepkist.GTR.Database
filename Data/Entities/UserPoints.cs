@@ -13,8 +13,8 @@ public partial class UserPoints
     [global::JsonApiDotNetCore.Resources.Annotations.AttrAttribute] public int Id { get; set; }
     [global::JsonApiDotNetCore.Resources.Annotations.AttrAttribute] public int IdUser { get; set; }
     [global::JsonApiDotNetCore.Resources.Annotations.AttrAttribute] public int Points { get; set; }
-    [global::JsonApiDotNetCore.Resources.Annotations.AttrAttribute] public global::System.DateTime DateCreated { get; set; }
-    [global::JsonApiDotNetCore.Resources.Annotations.AttrAttribute] public global::System.DateTime? DateUpdated { get; set; }
+    [global::JsonApiDotNetCore.Resources.Annotations.AttrAttribute] public global::System.DateTimeOffset DateCreated { get; set; }
+    [global::JsonApiDotNetCore.Resources.Annotations.AttrAttribute] public global::System.DateTimeOffset? DateUpdated { get; set; }
     [global::JsonApiDotNetCore.Resources.Annotations.AttrAttribute] public int Rank { get; set; }
     [global::JsonApiDotNetCore.Resources.Annotations.AttrAttribute] public int? WorldRecords { get; set; }
     #endregion
