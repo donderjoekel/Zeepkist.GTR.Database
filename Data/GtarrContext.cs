@@ -62,6 +62,8 @@ public partial class GtarrContext : DbContext
 
     public virtual DbSet<TNRD.Zeepkist.GTR.Database.Data.Entities.Version> Versions { get; set; } = null!;
 
+    public virtual DbSet<TNRD.Zeepkist.GTR.Database.Data.Entities.Vote> Votes { get; set; } = null!;
+
     public virtual DbSet<TNRD.Zeepkist.GTR.Database.Data.Entities.WorldRecordDaily> WorldRecordDailies { get; set; } = null!;
 
     public virtual DbSet<TNRD.Zeepkist.GTR.Database.Data.Entities.WorldRecordGlobal> WorldRecordGlobals { get; set; } = null!;
@@ -104,6 +106,7 @@ public partial class GtarrContext : DbContext
         modelBuilder.ApplyConfiguration(new TNRD.Zeepkist.GTR.Database.Data.Mapping.UserMap());
         modelBuilder.ApplyConfiguration(new TNRD.Zeepkist.GTR.Database.Data.Mapping.UserPointsMap());
         modelBuilder.ApplyConfiguration(new TNRD.Zeepkist.GTR.Database.Data.Mapping.VersionMap());
+        modelBuilder.ApplyConfiguration(new TNRD.Zeepkist.GTR.Database.Data.Mapping.VoteMap());
         modelBuilder.ApplyConfiguration(new TNRD.Zeepkist.GTR.Database.Data.Mapping.WorldRecordDailyMap());
         modelBuilder.ApplyConfiguration(new TNRD.Zeepkist.GTR.Database.Data.Mapping.WorldRecordGlobalMap());
         modelBuilder.ApplyConfiguration(new TNRD.Zeepkist.GTR.Database.Data.Mapping.WorldRecordMonthlyMap());
