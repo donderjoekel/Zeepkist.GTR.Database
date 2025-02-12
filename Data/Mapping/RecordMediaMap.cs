@@ -32,10 +32,6 @@ public partial class RecordMediaMap
             .HasColumnName("ghost_url")
             .HasColumnType("text");
 
-        builder.Property(t => t.ScreenshotUrl)
-            .HasColumnName("screenshot_url")
-            .HasColumnType("text");
-
         builder.Property(t => t.DateCreated)
             .IsRequired()
             .HasColumnName("date_created")
@@ -66,7 +62,6 @@ public partial class RecordMediaMap
         public const string Id = "id";
         public const string IdRecord = "id_record";
         public const string GhostUrl = "ghost_url";
-        public const string ScreenshotUrl = "screenshot_url";
         public const string DateCreated = "date_created";
         public const string DateUpdated = "date_updated";
     }

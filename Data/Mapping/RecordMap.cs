@@ -39,11 +39,6 @@ public partial class RecordMap
             .HasColumnType("character varying(255)")
             .HasMaxLength(255);
 
-        builder.Property(t => t.IsValid)
-            .IsRequired()
-            .HasColumnName("is_valid")
-            .HasColumnType("boolean");
-
         builder.Property(t => t.IdLevel)
             .IsRequired()
             .HasColumnName("id_level")
@@ -73,15 +68,15 @@ public partial class RecordMap
             .HasColumnType("real[]");
 
         // relationships
-        builder.HasOne(t => t.User)
-            .WithMany(t => t.Records)
-            .HasForeignKey(d => d.IdUser)
-            .HasConstraintName("records_user_foreign");
-
         builder.HasOne(t => t.Level)
             .WithMany(t => t.Records)
             .HasForeignKey(d => d.IdLevel)
             .HasConstraintName("record_level_fkey");
+
+        builder.HasOne(t => t.User)
+            .WithMany(t => t.Records)
+            .HasForeignKey(d => d.IdUser)
+            .HasConstraintName("records_user_foreign");
 
         #endregion
     }
@@ -99,7 +94,6 @@ public partial class RecordMap
         public const string IdUser = "id_user";
         public const string Time = "time";
         public const string GameVersion = "game_version";
-        public const string IsValid = "is_valid";
         public const string IdLevel = "id_level";
         public const string ModVersion = "mod_version";
         public const string DateCreated = "date_created";

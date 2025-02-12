@@ -43,15 +43,15 @@ public partial class UpvoteMap
             .HasColumnType("timestamp with time zone");
 
         // relationships
-        builder.HasOne(t => t.User)
-            .WithMany(t => t.Upvotes)
-            .HasForeignKey(d => d.IdUser)
-            .HasConstraintName("upvotes_user_foreign");
-
         builder.HasOne(t => t.Level)
             .WithMany(t => t.Upvotes)
             .HasForeignKey(d => d.IdLevel)
             .HasConstraintName("upvote_level_fkey");
+
+        builder.HasOne(t => t.User)
+            .WithMany(t => t.Upvotes)
+            .HasForeignKey(d => d.IdUser)
+            .HasConstraintName("upvotes_user_foreign");
 
         #endregion
     }

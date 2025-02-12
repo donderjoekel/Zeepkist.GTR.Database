@@ -43,15 +43,15 @@ public partial class FavoriteMap
             .HasColumnType("integer");
 
         // relationships
-        builder.HasOne(t => t.User)
-            .WithMany(t => t.Favorites)
-            .HasForeignKey(d => d.IdUser)
-            .HasConstraintName("favorites_user_foreign");
-
         builder.HasOne(t => t.Level)
             .WithMany(t => t.Favorites)
             .HasForeignKey(d => d.IdLevel)
             .HasConstraintName("favorite_level_fkey");
+
+        builder.HasOne(t => t.User)
+            .WithMany(t => t.Favorites)
+            .HasForeignKey(d => d.IdUser)
+            .HasConstraintName("favorites_user_foreign");
 
         #endregion
     }

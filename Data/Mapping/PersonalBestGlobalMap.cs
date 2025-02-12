@@ -48,6 +48,11 @@ public partial class PersonalBestGlobalMap
             .HasColumnType("timestamp with time zone");
 
         // relationships
+        builder.HasOne(t => t.Level)
+            .WithMany(t => t.PersonalBestGlobals)
+            .HasForeignKey(d => d.IdLevel)
+            .HasConstraintName("personal_best_global_level_fkey");
+
         builder.HasOne(t => t.Record)
             .WithMany(t => t.PersonalBestGlobals)
             .HasForeignKey(d => d.IdRecord)
@@ -57,11 +62,6 @@ public partial class PersonalBestGlobalMap
             .WithMany(t => t.PersonalBestGlobals)
             .HasForeignKey(d => d.IdUser)
             .HasConstraintName("personal_bests_global_user_fkey");
-
-        builder.HasOne(t => t.Level)
-            .WithMany(t => t.PersonalBestGlobals)
-            .HasForeignKey(d => d.IdLevel)
-            .HasConstraintName("personal_best_global_level_fkey");
 
         #endregion
     }

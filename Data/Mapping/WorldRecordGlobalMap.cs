@@ -43,15 +43,15 @@ public partial class WorldRecordGlobalMap
             .HasColumnType("timestamp with time zone");
 
         // relationships
-        builder.HasOne(t => t.Record)
-            .WithMany(t => t.WorldRecordGlobals)
-            .HasForeignKey(d => d.IdRecord)
-            .HasConstraintName("world_records_global_record_fkey");
-
         builder.HasOne(t => t.Level)
             .WithMany(t => t.WorldRecordGlobals)
             .HasForeignKey(d => d.IdLevel)
             .HasConstraintName("world_record_global_level_fkey");
+
+        builder.HasOne(t => t.Record)
+            .WithMany(t => t.WorldRecordGlobals)
+            .HasForeignKey(d => d.IdRecord)
+            .HasConstraintName("world_records_global_record_fkey");
 
         #endregion
     }
