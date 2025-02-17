@@ -16,6 +16,8 @@ public partial class UpvoteMap
         // key
         builder.HasKey(t => t.Id);
 
+        // unique
+
         // properties
         builder.Property(t => t.Id)
             .IsRequired()

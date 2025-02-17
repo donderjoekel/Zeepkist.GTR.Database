@@ -16,6 +16,9 @@ public partial class LevelMap
         // key
         builder.HasKey(t => t.Id);
 
+        // unique
+        builder.HasIndex(t => t.Hash).IsUnique();
+
         // properties
         builder.Property(t => t.Id)
             .IsRequired()
