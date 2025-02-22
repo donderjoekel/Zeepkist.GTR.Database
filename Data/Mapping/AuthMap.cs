@@ -12,6 +12,7 @@ public partial class AuthMap
         #region Generated Configure
         // table
         builder.ToTable("auth", "public");
+        builder.ToTable(t => t.HasComment("@omit"));
 
         // key
         builder.HasKey(t => t.Id);
